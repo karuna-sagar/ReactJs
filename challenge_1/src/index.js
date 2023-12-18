@@ -2,41 +2,41 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-const skills = [
-  {
-    skill: "HTML+CSS",
-    level: "advanced",
-    color: "#2662EA"
-  },
-  {
-    skill: "JavaScript",
-    level: "advanced",
-    color: "#EFD81D"
-  },
-  {
-    skill: "Web Design",
-    level: "advanced",
-    color: "#C3DCAF"
-  },
-  {
-    skill: "Git and GitHub",
-    level: "intermediate",
-    color: "#E84F33"
-  },
-  {
-    skill: "React",
-    level: "advanced",
-    color: "#60DAFB"
-  },
-  {
-    skill: "Svelte",
-    level: "beginner",
-    color: "#FF3B00"
-  }
-];
+// const skills = [
+//   {
+//     skill: "HTML+CSS",
+//     level: "advanced",
+//     color: "#2662EA"
+//   },
+//   {
+//     skill: "JavaScript",
+//     level: "advanced",
+//     color: "#EFD81D"
+//   },
+//   {
+//     skill: "Web Design",
+//     level: "advanced",
+//     color: "#C3DCAF"
+//   },
+//   {
+//     skill: "Git and GitHub",
+//     level: "intermediate",
+//     color: "#E84F33"
+//   },
+//   {
+//     skill: "React",
+//     level: "advanced",
+//     color: "#60DAFB"
+//   },
+//   {
+//     skill: "Svelte",
+//     level: "beginner",
+//     color: "#FF3B00"
+//   }
+// ];
 function Image() {
   return (
-    <img src="images/focaccia.jpg" alt="focaccia" />
+    <img className="avatar" src="images/focaccia.jpg" alt="focaccia" />
   )
 }
 function Intro() {
@@ -52,25 +52,45 @@ function Intro() {
   )
 }
 
+// function SkillList() {
+//   return (
+//     <div className="skill-list">
+//       {skills.map((skill) => (
+//         // <Skill skill={skill.skill} color={skill.color} level={skill.level} />
+//         <Skill skill={skill} />
+//       ))}
+//     </div>
+//   );
+// }
 function SkillList() {
   return (
     <div className="skill-list">
-      {skills.map((skill) => (
-        // <Skill skill={skill.skill} color={skill.color} level={skill.level} />
-        <Skill skill={skill} />
-      ))}
+      <Skill skill="React" emoji="💪" color="blue" />
+      <Skill skill="Javascript" emoji="💪" color="orange" />
+      <Skill skill="HTML+CSS" emoji="👍" color="yellow" />
+      <Skill skill="C++" emoji="👶" color="orangered" />
     </div>
   );
 }
 
-function Skill({ skill }) {
+// function Skill({ skill }) {
+//   return (
+//     <div className="skill" style={{ backgroundColor: skill.color }}>
+//       <span>{skill.skill}</span>
+//       <span>
+//         {skill.level === "beginner" ? "👶" : ""}
+//         {skill.level === "intermediate" ? "👍" : ""}
+//         {skill.level === "advanced" ? "💪" : ""}
+//       </span>
+//     </div>
+//   )
+// }
+function Skill(props) {
   return (
-    <div className="skill" style={{ backgroundColor: skill.color }}>
-      <span>{skill.skill}</span>
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
       <span>
-        {skill.level === "beginner" ? "👶" : ""}
-        {skill.level === "intermediate" ? "👍" : ""}
-        {skill.level === "advanced" ? "💪" : ""}
+        {props.emoji}
       </span>
     </div>
   )

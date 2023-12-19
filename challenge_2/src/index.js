@@ -54,29 +54,21 @@ function Intro() {
 function SkillList() {
   return (
     <div className="skill-list">
-      { }
+      {skills.map((skill) => (
+        <Skill skill={skill} />
+      ))}
     </div>
   );
 }
 
-// function Skill({ skill }) {
-//   return (
-//     <div className="skill" style={{ backgroundColor: skill.color }}>
-//       <span>{skill.skill}</span>
-//       <span>
-//         {skill.level === "beginner" ? "👶" : ""}
-//         {skill.level === "intermediate" ? "👍" : ""}
-//         {skill.level === "advanced" ? "💪" : ""}
-//       </span>
-//     </div>
-//   )
-// }
-function Skill(props) {
+function Skill({ skill }) {
   return (
-    <div className="skill" style={{ backgroundColor: props.color }}>
-      <span>{props.skill}</span>
+    <div className="skill" style={{ backgroundColor: skill.color }}>
+      <span>{skill.skill}</span>
       <span>
-        {props.emoji}
+        {skill.level === "beginner" ? "👶" : ""}
+        {skill.level === "intermediate" ? "👍" : ""}
+        {skill.level === "advanced" ? "💪" : ""}
       </span>
     </div>
   )

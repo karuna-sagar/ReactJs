@@ -73,12 +73,16 @@ function Menu() {
     <main className='menu'>
       <h2>Our Menu</h2>
       {numPizzas > 0 ? (
-        <div className='pizzas'>
+        <>
 
-          {pizzaData.map((pizza) => (
-            <Pizza pizza={pizza} key={pizza.name} />
-          ))}
-        </div>
+          <p>Authentic Italian Cuisine.6 creative dishes to choose from. All from stone oven,all organic,all delicious</p>
+          <div className='pizzas'>
+
+            {pizzaData.map((pizza) => (
+              <Pizza pizza={pizza} key={pizza.name} />
+            ))}
+          </div>
+        </>
       ) : <p>We're still working on Menu </p>}
 
 

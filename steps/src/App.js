@@ -23,7 +23,7 @@ export default function App() {
   // onClick={() => setIsOpen(!isOpen)}>
   return (
 
-    <><button className="close" onClick={() => setIsOpen(is => !is)}>&times;</button>{
+    <><button className="close" onClick={() => setIsOpen((is) => !is)}>&times;</button>{
 
       isOpen && (
 

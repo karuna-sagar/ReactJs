@@ -6,15 +6,11 @@ const initialItems = [
 
 
 export default function App() {
-  const [items, setItems] = useState([]);
-  function handleSetItem(item) {
-    setItems((items) => [...items, item])
-  }
   return (
     <div className='app'>
       <Logo />
-      <Form onAdditems={handleSetItem} />
-      <PackingList items={items} />
+      <Form />
+      <PackingList />
       <Stats />
     </div>
   )
@@ -23,18 +19,20 @@ export default function App() {
 function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>
 }
-function Form({ onAdditems }) {
+function Form() {
   const [description, setDescription] = useState("")
   const [quantity, setQuantity] = useState(1);
-
-
+  
+  function handleSetItem(item) {
+    setItems((items) => [...items, item])
+  }
   function handleSubmit(e) {
     e.preventDefault();
     if (!description) return;
     const newItem = { description: description, quantity: quantity, packed: false, id: Date.now() }
 
     console.log(newItem)
-    onAdditems(newItem);
+    handleSetItem(newItem);
     setDescription("");
     setQuantity(1);
   }
@@ -56,11 +54,11 @@ function Form({ onAdditems }) {
   )
 }
 
-function PackingList({ items }) {
+function PackingList() {
   return (
     <div className="list">
       <ul>
-        {items.map((item) => (<Item item={item} key={item.id} />))}
+        {initialItems.map((item) => (<Item item={item} key={item.id} />))}
       </ul>
     </div>
   )
@@ -82,4 +80,5 @@ function Stats() {
       <em>💼 You have X items on your List,and you already packed X (X%)</em>
     </footer>
   )
+}
 }

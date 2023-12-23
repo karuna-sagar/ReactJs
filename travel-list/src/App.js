@@ -20,8 +20,12 @@ function Logo() {
   return <h1>🏝️ Far Away 🧳</h1>
 }
 function Form() {
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(e);
+  }
   return (
-    <form className="add-form">
+    <form className="add-form" onSubmit={handleSubmit}>
       <h3>What Do You need for Your 🤩 Trip?</h3>
       <select>
         {Array.from({ length: 20 }, (_, i) => i + 1).map((num) =>
@@ -40,7 +44,7 @@ function PackingList() {
   return (
     <div className="list">
       <ul>
-        {initialItems.map((item) => (<Item item={item} />))}
+        {initialItems.map((item) => (<Item item={item} key={item.id} />))}
       </ul>
     </div>
   )

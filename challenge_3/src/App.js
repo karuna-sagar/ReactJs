@@ -18,6 +18,7 @@ function Counter() {
   return (
     <div>
       <div>
+
         <button onClick={() => setStep((c) => c - 1)}>-</button>
         <span>Step:{Math.abs(step)}</span>
         <button onClick={() => setStep((c) => c + 1)}>+</button>

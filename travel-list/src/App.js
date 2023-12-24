@@ -41,8 +41,6 @@ function Form({ onAddItems }) {
     e.preventDefault();
     if (!description) return;
     const newItem = { description: description, quantity: quantity, packed: false, id: Date.now() }
-
-    console.log(newItem)
     onAddItems(newItem);
     setDescription("");
     setQuantity(1);
@@ -87,13 +85,18 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   )
 }
 function Stats({ items }) {
+
   const numItems = items.length
   const packedItems = items.filter(item => item.packed).length
-  const percentage = Math.round((numItems * packedItems) / 100);
+  const percentage = Math.round((packedItems / numItems) * 100);
+  console.log(percentage)
   return (
     <footer className="stats">
-      {percentage === 100 ? `You got everything! to go`}
-      <em>💼 You have {numItems} items on your List,and you already packed {packedItems} (X%)</em>
+      <em>
+        {percentage === 100 ? `You got everything!  Ready to go ✈` :
+          `💼 You have ${numItems} items on your List,and you already packed ${packedItems} (${percentage}%)`
+        }
+      </em>
     </footer>
   )
 }

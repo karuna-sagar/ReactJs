@@ -85,11 +85,16 @@ function Item({ item, onDeleteItem, onToggleItem }) {
   )
 }
 function Stats({ items }) {
-
+  if (!items.length) {
+    return (
+      <p className="stats">
+        <em> Start Adding items to your Packing List 🚀 </em>
+      </p>
+    )
+  }
   const numItems = items.length
   const packedItems = items.filter(item => item.packed).length
   const percentage = Math.round((packedItems / numItems) * 100);
-  console.log(percentage)
   return (
     <footer className="stats">
       <em>

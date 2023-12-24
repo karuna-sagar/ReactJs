@@ -14,7 +14,9 @@ export default function App() {
     setItems(items => items.filter(item => item.id !== id))
   }
   function handleToggleItem(id) {
+
     setItems(items => items.map(item => item.id === id ? { ...item, packed: !item.packed } : item))
+
   }
   return (
     <div className='app'>

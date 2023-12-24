@@ -39,7 +39,7 @@ function Accordion({ data }) {
 function AccordionItem({ title, text, num }) {
   return (
     <div className="item">
-      <div className="number">{num}</div>
+      <div className="number">{num < 9 ? `0${num + 1}` : num + 1}</div>
       <div className="text"> {title} </div>
       <div className="icon"> - </div>
       <div className="content-box"> {text} </div>

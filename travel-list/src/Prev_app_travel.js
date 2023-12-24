@@ -22,7 +22,7 @@ function Logo() {
 function Form() {
   const [description, setDescription] = useState("")
   const [quantity, setQuantity] = useState(1);
-  
+
   function handleSetItem(item) {
     setItems((items) => [...items, item])
   }
@@ -80,5 +80,4 @@ function Stats() {
       <em>💼 You have X items on your List,and you already packed X (X%)</em>
     </footer>
   )
-}
 }

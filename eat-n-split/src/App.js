@@ -40,9 +40,11 @@ export default function App() {
     // setSelectedFriend(friend);
     setSelectedFriend(current => current?.id === friend.id ? null : friend);
     setShowAddFriend(false)
+
   }
   function handleSubmitBill(value) {
     setFriends(friends => friends.map(friend => friend.id === selectedFriend.id ? { ...friend, balance: friend.balance + value } : friend))
+    setSelectedFriend(null);
   }
   return (
     <div className="app">

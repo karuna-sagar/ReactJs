@@ -58,7 +58,8 @@ export default function App() {
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("")
-  const tempQuery = "dunki"
+  const [selectedId, setSelectedId] = useState("tt1375666"
+  )
   useEffect(function () {
     async function fetchMovies() {
       try {
@@ -75,6 +76,7 @@ export default function App() {
           throw new Error("Movie not Found")
         }
         setMovies(data.Search)
+        console.log(data.Search)
 
       } catch (err) {
         setError(err.message)

@@ -64,7 +64,7 @@ export default function App() {
       try {
 
         setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${tempQuery}`)
+        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${query}`)
 
         if (!res.ok)
           throw new Error("Something Went Wrong With fetching movies")
@@ -84,7 +84,7 @@ export default function App() {
     }
 
     fetchMovies();
-  }, [])
+  }, [query])
   return (
     <>
       <NavBar>

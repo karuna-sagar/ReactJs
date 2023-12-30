@@ -250,7 +250,7 @@ function Movie({ movie, onSelectMovie }) {
 function MovieDetails({ selectedId, onCLoseMovie }) {
   return (
     <div className="details">
-      <button className="byn-back" onClick={onCLoseMovie}>&larr;</button>
+      <button className="btn-back" onClick={onCLoseMovie}>&larr;</button>
       {selectedId}
     </div>
   )

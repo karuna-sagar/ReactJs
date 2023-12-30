@@ -58,12 +58,16 @@ const KEY = '43035ac2'
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(function () {
     async function fetchMovies() {
+      setIsLoading(true);
       const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=interstellar`)
       const data = await res.json();
       setMovies(data.Search)
+      setIsLoading(false)
     }
+
     fetchMovies();
   }, [])
   return (
@@ -75,7 +79,7 @@ export default function App() {
 
       <Main>
         <Box>
-          <MovieList movies={movies} />
+          {isLoading ? <Loader /> : <MovieList movies={movies} />}
         </Box>
 
         <Box>
@@ -87,6 +91,11 @@ export default function App() {
   );
 }
 
+function Loader() {
+  return (
+    <p className="loader">Loading...</p>
+  )
+}
 function NavBar({ children }) {
   return (
     <nav className="nav-bar">

@@ -52,21 +52,19 @@ const average = (arr) =>
 
 
 
-
-const KEY = '43035ac2'
-
 export default function App() {
+  const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("")
-  const query = "dunki"
+  const tempQuery = "dunki"
   useEffect(function () {
     async function fetchMovies() {
       try {
 
         setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${query}`)
+        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${tempQuery}`)
 
         if (!res.ok)
           throw new Error("Something Went Wrong With fetching movies")
@@ -90,7 +88,7 @@ export default function App() {
   return (
     <>
       <NavBar>
-        <Search />
+        <Search query={query} setQuery={setQuery} />
         <NumResults movies={movies} />
       </NavBar>
 
@@ -141,8 +139,7 @@ function Logo() {
   );
 }
 
-function Search() {
-  const [query, setQuery] = useState("");
+function Search({ query, setQuery }) {
 
   return (
     <input

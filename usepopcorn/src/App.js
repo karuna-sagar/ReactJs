@@ -64,6 +64,7 @@ export default function App() {
       try {
 
         setIsLoading(true);
+        setError("")
         const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${query}`)
 
         if (!res.ok)
@@ -82,7 +83,11 @@ export default function App() {
         setIsLoading(false)
       }
     }
-
+    if (query.length < 3) {
+      setMovies([])
+      setError('')
+      return
+    }
     fetchMovies();
   }, [query])
   return (
@@ -155,7 +160,7 @@ function Search({ query, setQuery }) {
 function NumResults({ movies }) {
   return (
     <p className="num-results">
-      Found <strong>{movies.length}</strong> results
+      Found <strong>{movies?.length}</strong> results
     </p>
   );
 }

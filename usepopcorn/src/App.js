@@ -62,9 +62,7 @@ export default function App() {
   function handleSlectMovie(id) {
     setSelectedId(selectedId => id === selectedId ? null : id);
   }
-  function watchedMovies() {
-    setWatched()
-  }
+
   function handleCloseMovie() {
     setSelectedId(null);
   }

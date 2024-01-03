@@ -249,7 +249,7 @@ function Movie({ movie, onSelectMovie }) {
 
 function MovieDetails({ selectedId, onCLoseMovie }) {
   const [movie, setMovie] = useState({});
-  const { Title: title, Year: year, Poster: poster, Runtime: runtime, imdbRating, Plot: plot, Actor: actors, Director: director, Genre: genre, } = movie;
+  const { Title: title, Year: year, Poster: poster, Runtime: runtime, imdbRating, Released: released, Plot: plot, Actor: actors, Director: director, Genre: genre, } = movie;
   useEffect(function () {
     async function getMovieDetails() {
       const res = await fetch(`http://www.omdbapi.com/?apikey=43035ac2&i=${selectedId}`)
@@ -265,7 +265,7 @@ function MovieDetails({ selectedId, onCLoseMovie }) {
         <img src={poster} alt={`Poster of ${movie} movie`} />
         <div className="details-overview">
           <h2>{title}</h2>
-          <p>{year} &bull; {runtime}</p>
+          <p>{released} &bull; {runtime}</p>
           <p>{genre}</p>
           <p> <span>⭐</span> {imdbRating} IMDb Rating </p>
         </div>

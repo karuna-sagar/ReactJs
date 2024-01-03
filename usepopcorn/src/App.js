@@ -318,3 +318,9 @@ function WatchedMovie({ movie }) {
     </li>
   );
 }
+
+function watchedMovies() {
+  return (
+    <span> Watched movies are </span>
+  )
+}

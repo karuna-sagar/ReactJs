@@ -72,7 +72,7 @@ export default function App() {
 
         setIsLoading(true);
         setError("")
-        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=43035ac2&s=${query}`)
+        const res = await fetch(`http://www.omdbapi.com/?apikey=43035ac2&s=${query}`)
 
         if (!res.ok)
           throw new Error("Something Went Wrong With fetching movies")
@@ -248,6 +248,16 @@ function Movie({ movie, onSelectMovie }) {
 }
 
 function MovieDetails({ selectedId, onCLoseMovie }) {
+  const [movie, setMovie] = useState({});
+
+  useEffect(function () {
+    async function getMovieDetails() {
+      const res = await fetch(`http://www.omdbapi.com/?apikey=43035ac2&i=${selectedId}`)
+      const data = await res.json();
+      setMovie(data);
+    }
+    getMovieDetails()
+  }, [])
   return (
     <div className="details">
       <button className="btn-back" onClick={onCLoseMovie}>&larr;</button>
@@ -319,8 +329,3 @@ function WatchedMovie({ movie }) {
   );
 }
 
-function watchedMovies() {
-  return (
-    <span> Watched movies are </span>
-  )
-}

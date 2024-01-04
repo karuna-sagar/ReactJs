@@ -257,6 +257,7 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched, watched }) {
   const { Title: title, Year: year, Poster: poster, Runtime: runtime, imdbRating, Released: released, Plot: plot, Actor: actors, Director: director, Genre: genre, } = movie;
   const [userRating, setUserRating] = useState('');
   const isWatched = watched.map(movie => movie.imdbID).includes(selectedId);
+  const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -307,7 +308,7 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched, watched }) {
                       )}
                   </>
                   :
-                  (<p>You Rated This Movie</p>)
+                  (<p>You Rated This Movie with {watchedUserRating} <span>⭐</span></p>)
                 }
               </div>
               <p>

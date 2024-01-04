@@ -74,6 +74,8 @@ export default function App() {
   function handleDeleteWatched(id) {
     setWatched(watched.filter(movies => movies.imdbID !== id))
   }
+
+
   useEffect(function () {
     const controller = new AbortController();
     async function fetchMovies() {
@@ -283,6 +285,13 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onAddWatched(newWatchedMovie)
     onCloseMovie();
   }
+  useEffect(function () {
+    document.addEventListener('keydown', function (e) {
+      if (e.code === "Escape") {
+        onCloseMovie();
+      }
+    })
+  }, [])
   useEffect(function () {
     if (!title) return;
     document.title = `Movie | ${title}`;

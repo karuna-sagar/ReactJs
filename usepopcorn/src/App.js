@@ -264,7 +264,8 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched }) {
       year,
       poster,
       imdbRating: Number(imdbRating),
-      runtime: Number(runtime.split(' ').at(0))
+      runtime: Number(runtime.split(' ').at(0)),
+      userRating
     }
     onAddWatched(newWatchedMovie)
     onCLoseMovie();
@@ -298,8 +299,10 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched }) {
             <section>
 
               <div className="rating">
-                <StarRating maxRating={10} size={24} />
-                <button className="btn-add" onClick={handleAdd} onSetRating={setUserRating} >+ Add to list </button>
+                <StarRating maxRating={10} size={24} onSetRating={setUserRating} />
+                {userRating > 0 &&
+                  (<button className="btn-add" onClick={handleAdd} >+ Add to list </button>
+                  )}
               </div>
               <p>
                 <em>{plot}</em>

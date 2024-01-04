@@ -75,12 +75,13 @@ export default function App() {
     setWatched(watched.filter(movies => movies.imdbID !== id))
   }
   useEffect(function () {
+    const controller = new AbortController();
     async function fetchMovies() {
       try {
 
         setIsLoading(true);
         setError("")
-        const res = await fetch(`http://www.omdbapi.com/?apikey=43035ac2&s=${query}`)
+        const res = await fetch(`http://www.omdbapi.com/?apikey=43035ac2&s=${query}`, { signal: controller.signal })
 
         if (!res.ok)
           throw new Error("Something Went Wrong With fetching movies")
@@ -90,10 +91,14 @@ export default function App() {
           throw new Error("Movie not Found")
         }
         setMovies(data.Search)
-        console.log(data.Search)
+        setError("")
+        // console.log(data.Search)
 
       } catch (err) {
-        setError(err.message)
+        if (err.name !== 'AbortError') {
+
+          setError(err.message)
+        }
       }
       finally {
         setIsLoading(false)
@@ -105,6 +110,9 @@ export default function App() {
       return
     }
     fetchMovies();
+    return function () {
+      controller.abort();
+    }
   }, [query])
   return (
     <>

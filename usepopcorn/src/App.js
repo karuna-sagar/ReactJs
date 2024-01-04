@@ -251,10 +251,23 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetails({ selectedId, onCLoseMovie }) {
+function MovieDetails({ selectedId, onCLoseMovie, onAddWatched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false)
   const { Title: title, Year: year, Poster: poster, Runtime: runtime, imdbRating, Released: released, Plot: plot, Actor: actors, Director: director, Genre: genre, } = movie;
+
+  function handleAdd() {
+    const newWatchedMovie = {
+      imdbID: selectedId,
+      title,
+      year,
+      poster,
+      imdbRating: Number(imdbRating),
+      runtime: Number(runtime.split(' ').at(0))
+    }
+    onAddWatched(newWatchedMovie)
+  }
+
   useEffect(function () {
     setIsLoading(true)
     async function getMovieDetails() {
@@ -284,6 +297,7 @@ function MovieDetails({ selectedId, onCLoseMovie }) {
 
               <div className="rating">
                 <StarRating maxRating={10} size={24} />
+                <button className="btn-add" onClick={handleAdd}>+ Add to list </button>
               </div>
               <p>
                 <em>{plot}</em>

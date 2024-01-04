@@ -70,6 +70,10 @@ export default function App() {
   function handleAddWatched(movie) {
     setWatched(watched => [...watched, movie])
   }
+
+  function handleDeleteWatched(id) {
+    setWatched(watched.filter(movies => movies.imdbID !== id))
+  }
   useEffect(function () {
     async function fetchMovies() {
       try {
@@ -123,7 +127,7 @@ export default function App() {
               <>
 
                 <WatchedSummary watched={watched} />
-                <WatchedMoviesList watched={watched} />
+                <WatchedMoviesList watched={watched} onDeleteWAtched={handleDeleteWatched} />
               </>
           }
         </Box>
@@ -353,17 +357,17 @@ function WatchedSummary({ watched }) {
   );
 }
 
-function WatchedMoviesList({ watched }) {
+function WatchedMoviesList({ watched, onDeleteWAtched }) {
   return (
     <ul className="list">
       {watched.map((movie) => (
-        <WatchedMovie movie={movie} key={movie.imdbID} />
+        <WatchedMovie movie={movie} key={movie.imdbID} onDeleteWAtched={onDeleteWAtched} />
       ))}
     </ul>
   );
 }
 
-function WatchedMovie({ movie }) {
+function WatchedMovie({ movie, onDeleteWAtched }) {
   return (
     <li>
       <img src={movie.poster} alt={`${movie.title} poster`} />
@@ -381,6 +385,7 @@ function WatchedMovie({ movie }) {
           <span>⏳</span>
           <span>{movie.runtime} min</span>
         </p>
+        <button className="btn-delete" onClick={() => onDeleteWAtched(movie.imdbID)}>X</button>
       </div>
     </li>
   );

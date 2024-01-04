@@ -266,6 +266,7 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched }) {
       runtime: Number(runtime.split(' ').at(0))
     }
     onAddWatched(newWatchedMovie)
+    onCLoseMovie();
   }
 
   useEffect(function () {

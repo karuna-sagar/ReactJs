@@ -123,7 +123,7 @@ export default function App() {
 
         <Box>
           {
-            selectedId ? <MovieDetails selectedId={selectedId} onCLoseMovie={handleCloseMovie} onAddWatched={handleAddWatched} watched={watched} /> :
+            selectedId ? <MovieDetails selectedId={selectedId} onCloseMovie={handleCloseMovie} onAddWatched={handleAddWatched} watched={watched} /> :
               <>
 
                 <WatchedSummary watched={watched} />
@@ -255,7 +255,7 @@ function Movie({ movie, onSelectMovie }) {
   );
 }
 
-function MovieDetails({ selectedId, onCLoseMovie, onAddWatched, watched }) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false)
   const { Title: title, Year: year, Poster: poster, Runtime: runtime, imdbRating, Released: released, Plot: plot, Actor: actors, Director: director, Genre: genre, } = movie;
@@ -273,7 +273,7 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched, watched }) {
       userRating
     }
     onAddWatched(newWatchedMovie)
-    onCLoseMovie();
+    onCloseMovie();
   }
 
   useEffect(function () {
@@ -292,7 +292,7 @@ function MovieDetails({ selectedId, onCLoseMovie, onAddWatched, watched }) {
         isLoading ? <Loader /> :
           <>
             <header>
-              <button className="btn-back" onClick={onCLoseMovie}>&larr;</button>
+              <button className="btn-back" onClick={onCloseMovie}>&larr;</button>
               <img src={poster} alt={`Poster of ${movie} movie`} />
               <div className="details-overview">
                 <h2>{title}</h2>

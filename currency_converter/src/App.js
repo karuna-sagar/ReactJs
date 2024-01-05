@@ -4,11 +4,12 @@ export default function App() {
   const [amount, setAmount] = useState(100);
   const [fromCurr, setFromCurr] = useState("INR");
   const [toCurr, setToCurr] = useState("USD");
+  const [converted, setConverted] = useState("")
   useEffect(function () {
     async function convert() {
       const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurr}&to=${toCurr}`)
       const data = await res.json()
-      console.log(data)
+      console.log(data.rates[toCurr])
     }
     convert()
   }, [])

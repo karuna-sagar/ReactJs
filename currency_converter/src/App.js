@@ -14,6 +14,7 @@ export default function App() {
       setConverted(data.rates[toCurr])
       setIsLoading(false)
     }
+    if (toCurr === fromCurr) return setConverted(amount)
     convert()
   }, [amount, fromCurr, toCurr])
   return (

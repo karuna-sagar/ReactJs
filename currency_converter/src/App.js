@@ -9,7 +9,7 @@ export default function App() {
     async function convert() {
       const res = await fetch(`https://api.frankfurter.app/latest?amount=${amount}&from=${fromCurr}&to=${toCurr}`)
       const data = await res.json()
-      console.log(data.rates[toCurr])
+      setConverted(data.rates[toCurr])
     }
     convert()
   }, [])
@@ -28,7 +28,7 @@ export default function App() {
         <option value="CAD">CAD</option>
         <option value="INR">INR</option>
       </select>
-      <p>OUTPUT</p>
+      <p>{converted} {toCurr}</p>
     </div>
   )
 }

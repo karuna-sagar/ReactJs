@@ -22,6 +22,7 @@ export default function App() {
 
   function handleAddWatched(movie) {
     setWatched(watched => [...watched, movie])
+    localStorage.setItem("watched", JSON.stringify([...watched, movie]))
   }
 
   function handleDeleteWatched(id) {
@@ -202,6 +203,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [userRating, setUserRating] = useState('');
   const isWatched = watched.map(movie => movie.imdbID).includes(selectedId);
   const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -214,6 +216,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     }
     onAddWatched(newWatchedMovie)
     onCloseMovie();
+
   }
   useEffect(function () {
     function callback(e) {
@@ -260,6 +263,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
                 <p> <span>⭐</span> {imdbRating} IMDb Rating </p>
               </div>
             </header>
+
             <section>
 
               <div className="rating">

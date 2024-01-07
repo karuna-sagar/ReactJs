@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useDebugValue, useEffect, useRef, useState } from "react";
 import StarRating from "./StarRating";
 const average = (arr) =>
   arr.reduce((acc, cur, i, arr) => acc + cur / arr.length, 0);
@@ -140,6 +140,9 @@ function Logo() {
 
 function Search({ query, setQuery }) {
   const inputEl = useRef(null);
+  useEffect(function () {
+    inputEl.current.focus()
+  }, [])
   return (
     <input
       className="search"

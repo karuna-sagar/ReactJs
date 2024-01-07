@@ -227,7 +227,10 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [userRating, setUserRating] = useState('');
   const isWatched = watched.map(movie => movie.imdbID).includes(selectedId);
   const watchedUserRating = watched.find(movie => movie.imdbID === selectedId)?.userRating
-
+  const countRef = useRef(0);
+  useEffect(function () {
+    if (userRating) countRef.current = countRef.current + 1;
+  }, [userRating])
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -242,6 +245,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     onCloseMovie();
 
   }
+
   useEffect(function () {
     function callback(e) {
       if (e.code === "Escape") {

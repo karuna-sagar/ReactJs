@@ -383,3 +383,12 @@ function WatchedMovie({ movie, onDeleteWAtched }) {
   );
 }
 
+function WatchedMoviesList({ watched, onDeleteWAtched }) {
+  return (
+    <ul className="list">
+      {watched.map((movie) => (
+        <WatchedMovie movie={movie} key={movie.imdbID} onDeleteWAtched={onDeleteWAtched} />
+      ))}
+    </ul>
+  );
+}

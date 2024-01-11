@@ -2,6 +2,7 @@ import { useReducer, useState } from "react";
 
 function reducer(state, action) {
   console.log(state, action)
+  return state + action;
 }
 function DateCounter() {
   // const [count, setCount] = useState(0);
@@ -14,11 +15,13 @@ function DateCounter() {
   date.setDate(date.getDate() + count);
 
   const dec = function () {
+    dispatch(-1)
     // setCount((count) => count - 1);
     // setCount((count) => count - step);
   };
 
   const inc = function () {
+    dispatch(1)
     // setCount((count) => count + 1);
     // setCount((count) => count + step);
   };

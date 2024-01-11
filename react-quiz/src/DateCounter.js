@@ -4,11 +4,13 @@ function reducer(state, action) {
   console.log(state, action)
   switch (action.type) {
     case "inc":
-      return { ...state, count: state.count + 1 }
+      return { ...state, count: state.count + state.step }
     case "dec":
-      return { ...state, count: state.count - 1 }
+      return { ...state, count: state.count - state.step }
     case "setCount":
       return { ...state, count: action.payload }
+    case "setStep":
+      return { ...state, step: action.payload }
     default:
       throw new Error("unknown action")
   }
@@ -48,6 +50,7 @@ function DateCounter() {
 
   const defineStep = function (e) {
     // setStep(Number(e.target.value));
+    dispatch({ type: "setStep", payload: Number(e.target.value) })
   };
 
   const reset = function () {

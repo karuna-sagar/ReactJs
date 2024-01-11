@@ -1,7 +1,6 @@
 import { useReducer, useState } from "react";
 
 function reducer(state, action) {
-  console.log(action, state)
   if (action.type === "inc") return state + action.payload
   if (action.type === "dec") return state - action.payload
   if (action.type === "setCount") return action.payload

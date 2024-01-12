@@ -6,6 +6,7 @@ import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
 import StartScreen from "./StartScreen";
+import Question from "./Question";
 
 export default function App() {
   const initialState = {
@@ -24,6 +25,8 @@ export default function App() {
         return { ...state, questions: action.payload, status: 'ready' }
       case "dataFailed":
         return { ...state, status: 'error' }
+      case "start":
+        return { ...state, status: 'active' }
       default:
         throw new Error('Unknown action')
     }
@@ -41,7 +44,8 @@ export default function App() {
       <Main className="main">
         {status === 'loading' && <Loader />}
         {status === 'error' && <Error />}
-        {status === 'ready' && <StartScreen numQuestions={numQuestions} />}
+        {status === 'ready' && <StartScreen numQuestions={numQuestions} dispatch={dispatch} />}
+        {status === 'active' && <Question />}
       </Main>
     </div>
   );

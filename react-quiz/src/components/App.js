@@ -3,6 +3,8 @@
 import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";
+import Loader from "./Loader";
+import Error from "./Error";
 
 export default function App() {
   const initialState = {
@@ -10,7 +12,7 @@ export default function App() {
     // 'Loading' ,'ready','error' ,'active','finished'
     status: 'loading',
   }
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [{ question, status }, dispatch] = useReducer(reducer, initialState);
   function reducer(state, action) {
     console.log(state)
     switch (action.type) {

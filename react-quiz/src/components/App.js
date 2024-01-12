@@ -36,7 +36,8 @@ export default function App() {
       <Header />
 
       <Main className="main">
-        <p>1/15questions</p>
+        {status === 'loading' && <Loader />}
+        {status === 'error' && <Error />}
       </Main>
     </div>
   );

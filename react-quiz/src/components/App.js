@@ -5,6 +5,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Loader from "./Loader";
 import Error from "./Error";
+import StartScreen from "./StartScreen";
 
 export default function App() {
   const initialState = {
@@ -12,7 +13,10 @@ export default function App() {
     // 'Loading' ,'ready','error' ,'active','finished'
     status: 'loading',
   }
-  const [{ question, status }, dispatch] = useReducer(reducer, initialState);
+
+  const [{ questions, status }, dispatch] = useReducer(reducer, initialState);
+  const numQuestions = questions.length;
+
   function reducer(state, action) {
     console.log(state)
     switch (action.type) {
@@ -30,7 +34,6 @@ export default function App() {
       .then(data => dispatch({ type: "dataReceived", payload: data }))
       .catch(err => dispatch({ type: "dataFailed" }))
   }, [])
-
   return (
     <div className="app">
       <Header />
@@ -38,6 +41,7 @@ export default function App() {
       <Main className="main">
         {status === 'loading' && <Loader />}
         {status === 'error' && <Error />}
+        {status === 'ready' && <StartScreen numQuestions={numQuestions} />}
       </Main>
     </div>
   );

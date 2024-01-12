@@ -1,4 +1,4 @@
-export default function Header() {
+function Header() {
   return (
     <header className='app-header'>
       <img src='logo512.png' alt='React logo' />
@@ -7,4 +7,4 @@ export default function Header() {
   );
 }
 
-
+export default Header;

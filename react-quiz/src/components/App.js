@@ -8,6 +8,8 @@ import Question from "./Question";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import Footer from "./Footer";
+import Timer from "./Timer";
 
 export default function App() {
   const initialState = {
@@ -18,10 +20,13 @@ export default function App() {
     answer: null,
     points: 0,
     highScore: 0,
+    secondsRemaining: 10,
   };
 
-  const [{ questions, status, index, answer, points, highScore }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, index, answer, points, highScore, secondsRemaining },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
   const maxMarks = questions.reduce((prev, curr) => prev + curr.points, 0);
   function reducer(state, action) {
@@ -65,6 +70,8 @@ export default function App() {
       //   answer: null,
       //   status: "ready",
       // };
+      case "tick":
+        return { ...state, secondsRemaining: state.secondsRemaining - 1 };
       default:
         throw new Error("Unknown action");
     }
@@ -102,12 +109,18 @@ export default function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextButton
-              dispatch={dispatch}
-              answer={answer}
-              index={index}
-              numQuestions={numQuestions}
-            />
+            <Footer>
+              <Timer
+                dispatch={dispatch}
+                secondsRemaining={secondsRemaining}
+              />
+              <NextButton
+                dispatch={dispatch}
+                answer={answer}
+                index={index}
+                numQuestions={numQuestions}
+              />
+            </Footer>
           </>
         )}
         {status === "finish" && (

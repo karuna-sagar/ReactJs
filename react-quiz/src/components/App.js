@@ -10,7 +10,7 @@ import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
 import Footer from "./Footer";
 import Timer from "./Timer";
-
+const SEC_PER_QUESTION = 30;
 export default function App() {
   const initialState = {
     questions: [],
@@ -20,7 +20,7 @@ export default function App() {
     answer: null,
     points: 0,
     highScore: 0,
-    secondsRemaining: 10,
+    secondsRemaining: null,
   };
 
   const [
@@ -29,6 +29,7 @@ export default function App() {
   ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
   const maxMarks = questions.reduce((prev, curr) => prev + curr.points, 0);
+
   function reducer(state, action) {
     console.log(state);
     switch (action.type) {
@@ -37,7 +38,11 @@ export default function App() {
       case "dataFailed":
         return { ...state, status: "error" };
       case "start":
-        return { ...state, status: "active" };
+        return {
+          ...state,
+          status: "active",
+          secondsRemaining: state.questions.length * SEC_PER_QUESTION,
+        };
       case "newAnswer":
         const question = state.questions.at(state.index);
         return {

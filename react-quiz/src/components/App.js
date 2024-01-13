@@ -57,6 +57,14 @@ export default function App() {
         };
       case "restart":
         return { ...initialState, questions: state.questions, status: "ready" };
+      // return {
+      //   ...state,
+      //   points: 0,
+      //   highScore: 0,
+      //   index: 0,
+      //   answer: null,
+      //   status: "ready",
+      // };
       default:
         throw new Error("Unknown action");
     }

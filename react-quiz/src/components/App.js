@@ -55,6 +55,8 @@ export default function App() {
           status: "finish",
           highScore: state.points > state.highScore ? state.points : highScore,
         };
+      case "restart":
+        return { ...initialState, questions: state.questions, status: "ready" };
       default:
         throw new Error("Unknown action");
     }
@@ -105,6 +107,7 @@ export default function App() {
             maxMarks={maxMarks}
             points={points}
             highScore={highScore}
+            dispatch={dispatch}
           />
         )}
       </Main>

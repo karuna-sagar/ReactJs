@@ -1,6 +1,7 @@
-function NextButton({ dispatch, answer, index, numQuestions }) {
-  if (answer === null) return null;
+import React from "react";
 
+export default function NextButton({ dispatch, answer, numQuestions, index }) {
+  if (answer === null) return;
   if (index < numQuestions - 1)
     return (
       <button
@@ -10,7 +11,6 @@ function NextButton({ dispatch, answer, index, numQuestions }) {
         Next
       </button>
     );
-
   if (index === numQuestions - 1)
     return (
       <button
@@ -21,5 +21,3 @@ function NextButton({ dispatch, answer, index, numQuestions }) {
       </button>
     );
 }
-
-export default NextButton;

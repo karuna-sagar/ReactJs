@@ -71,7 +71,11 @@ export default function App() {
       //   status: "ready",
       // };
       case "tick":
-        return { ...state, secondsRemaining: state.secondsRemaining - 1 };
+        return {
+          ...state,
+          secondsRemaining: state.secondsRemaining - 1,
+          status: state.secondsRemaining === 0 ? "finished" : state.status,
+        };
       default:
         throw new Error("Unknown action");
     }

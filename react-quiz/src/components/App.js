@@ -58,7 +58,8 @@ export default function App() {
         return {
           ...state,
           status: "finish",
-          highScore: state.points > state.highScore ? state.points : highScore,
+          highScore:
+            state.points > state.highScore ? state.points : state.highScore,
         };
       case "restart":
         return { ...initialState, questions: state.questions, status: "ready" };

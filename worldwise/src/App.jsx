@@ -1,3 +1,6 @@
+// import React from "react";
+
 export default function App() {
-  return <div>worldwise</div>;
+  const x = 23;
+  return <div>WorldWise</div>;
 }

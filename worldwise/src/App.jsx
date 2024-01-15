@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Product from "./pages/Product";
 import Pricing from "./pages/Pricing";
 import HomePage from "./pages/HomePage";
+import PageNotFound from "./pages/PageNotFound";
 export default function App() {
   return (
     <BrowserRouter>
@@ -19,6 +20,10 @@ export default function App() {
         <Route
           path="pricing"
           element={<Pricing />}
+        />
+        <Route
+          path="*"
+          element={<PageNotFound />}
         />
       </Routes>
     </BrowserRouter>

@@ -11,7 +11,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          index
           element={<HomePage />}
         />
         <Route
@@ -35,7 +35,24 @@ export default function App() {
         <Route
           path="app"
           element={<AppLayout />}
-        />
+        >
+          <Route
+            index
+            element={<p>List</p>}
+          />
+          <Route
+            path="cities"
+            element={<p>Cities</p>}
+          />
+          <Route
+            path="countries"
+            element={<p>Countries</p>}
+          />
+          <Route
+            path="form"
+            element={<p>form</p>}
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

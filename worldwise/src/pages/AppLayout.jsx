@@ -1,10 +1,8 @@
-import React from "react";
-
-import PageNav from "../Components/PageNav";
+import AppNav from "../Components/AppNav";
 export default function AppLayout() {
   return (
     <div>
-      <PageNav />
+      <AppNav />
       <h1>App</h1>
     </div>
   );

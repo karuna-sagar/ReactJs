@@ -5,6 +5,7 @@ import Pricing from "./pages/Pricing";
 import HomePage from "./pages/HomePage";
 import AppLayout from "./pages/AppLayout";
 import PageNotFound from "./pages/PageNotFound";
+import Login from "./pages/Login";
 export default function App() {
   return (
     <BrowserRouter>
@@ -22,6 +23,11 @@ export default function App() {
           path="pricing"
           element={<Pricing />}
         />
+        <Route
+          path="login"
+          element={<Login />}
+        />
+
         <Route
           path="*"
           element={<PageNotFound />}

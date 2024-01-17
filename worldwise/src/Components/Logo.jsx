@@ -9,7 +9,6 @@ function Logo() {
         alt="WorldWise logo"
         className={styles.logo}
       />
-      ;
     </Link>
   );
 }

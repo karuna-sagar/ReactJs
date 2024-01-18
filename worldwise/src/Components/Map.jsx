@@ -11,6 +11,13 @@ export default function Map() {
       <h1>
         Position : {lat} , {lng}
       </h1>
+      <button
+        onClick={() => {
+          setSearchParam({ lat: 28, lng: 50 });
+        }}
+      >
+        Change Post
+      </button>
     </div>
   );
 }

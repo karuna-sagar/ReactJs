@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
 import City from "./Components/City";
+import Form from "./Components/Form";
 const BASE_URL = "http://localhost:9000";
 export default function App() {
   const [cities, setCities] = useState([]);
@@ -92,7 +93,7 @@ export default function App() {
           />
           <Route
             path="form"
-            element={<p>form</p>}
+            element={<Form />}
           />
         </Route>
       </Routes>

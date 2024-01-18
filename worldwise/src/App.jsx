@@ -8,6 +8,7 @@ import PageNotFound from "./pages/PageNotFound";
 import Login from "./pages/Login";
 import { useEffect, useState } from "react";
 import CityList from "./Components/CityList";
+import CountryList from "./Components/CountryList";
 const BASE_URL = "http://localhost:9000";
 export default function App() {
   const [cities, setCities] = useState([]);
@@ -77,7 +78,7 @@ export default function App() {
           <Route
             path="countries"
             element={
-              <CityList
+              <CountryList
                 cities={cities}
                 isLoading={isLoading}
               />

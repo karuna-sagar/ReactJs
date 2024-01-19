@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
-import { PostContext, PostProvider } from "./PostContext";
+
 function createRandomPost() {
   return {
     title: `${faker.hacker.adjective()} ${faker.hacker.noun()}`,
@@ -8,12 +8,9 @@ function createRandomPost() {
   };
 }
 //1) create context
-
+const PostContext = createContext();
 function App() {
   const [isFakeDark, setIsFakeDark] = useState(false);
-
-  // Derived state. These are the posts that will actually be displayed
-
   // Whenever `isFakeDark` changes, we toggle the `fake-dark-mode` class on the HTML element (see in "Elements" dev tool).
   useEffect(
     function () {
@@ -24,7 +21,16 @@ function App() {
 
   return (
     // 2. Give the value to this context
-    <PostProvider>
+    <PostContext.Provider
+      value={{
+        posts: searchedPosts,
+        onAddPost: handleAddPost,
+        onClearPosts: handleClearPosts,
+
+        searchQuery,
+        setSearchQuery,
+      }}
+    >
       <section>
         <button
           onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
@@ -38,7 +44,7 @@ function App() {
         <Archive />
         <Footer />
       </section>
-    </PostProvider>
+    </PostContext.Provider>
   );
 }
 

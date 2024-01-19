@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 import { PostContext, PostProvider } from "./PostContext";
 function createRandomPost() {
@@ -24,21 +24,21 @@ function App() {
 
   return (
     // 2. Give the value to this context
-    <PostProvider>
-      <section>
-        <button
-          onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
-          className="btn-fake-dark-mode"
-        >
-          {isFakeDark ? "☀️" : "🌙"}
-        </button>
+    <section>
+      <button
+        onClick={() => setIsFakeDark((isFakeDark) => !isFakeDark)}
+        className="btn-fake-dark-mode"
+      >
+        {isFakeDark ? "☀️" : "🌙"}
+      </button>
 
+      <PostProvider>
         <Header />
         <Main />
         <Archive />
         <Footer />
-      </section>
-    </PostProvider>
+      </PostProvider>
+    </section>
   );
 }
 

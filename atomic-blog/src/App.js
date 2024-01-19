@@ -105,7 +105,6 @@ function Results() {
 }
 
 function Main() {
-  const { posts, onAddPost } = useContext(PostContext);
   return (
     <main>
       <FormAddPost />
@@ -114,7 +113,8 @@ function Main() {
   );
 }
 
-function Posts({ posts }) {
+function Posts() {
+  const { posts } = useContext(PostContext);
   return (
     <section>
       <List posts={posts} />
@@ -122,7 +122,8 @@ function Posts({ posts }) {
   );
 }
 
-function FormAddPost({ onAddPost }) {
+function FormAddPost() {
+  const { onAddPost } = useContext(PostContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 

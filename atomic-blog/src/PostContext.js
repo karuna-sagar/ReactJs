@@ -46,9 +46,12 @@ function PostProvider({ children }) {
     </PostContext.Provider>
   );
 }
-
+//OWn custom hook
 function usePost() {
   const context = useContext(PostContext);
+  if (context === undefined) {
+    throw new Error("usePost must be used within a PostProvider");
+  }
   return context;
 }
 export { PostContext, PostProvider, usePost };

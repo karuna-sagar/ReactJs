@@ -49,6 +49,7 @@ function App() {
         posts: searchedPosts,
         onAddPost: handleAddPost,
         onClearPosts: handleClearPosts,
+
         searchQuery,
         setSearchQuery,
       }}
@@ -61,17 +62,9 @@ function App() {
           {isFakeDark ? "☀️" : "🌙"}
         </button>
 
-        <Header
-          posts={searchedPosts}
-          onClearPosts={handleClearPosts}
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
-        <Main
-          posts={searchedPosts}
-          onAddPost={handleAddPost}
-        />
-        <Archive onAddPost={handleAddPost} />
+        <Header />
+        <Main />
+        <Archive />
         <Footer />
       </section>
     </PostContext.Provider>
@@ -111,11 +104,12 @@ function Results() {
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main({ posts, onAddPost }) {
+function Main() {
+  const { posts, onAddPost } = useContext(PostContext);
   return (
     <main>
-      <FormAddPost onAddPost={onAddPost} />
-      <Posts posts={posts} />
+      <FormAddPost />
+      <Posts />
     </main>
   );
 }

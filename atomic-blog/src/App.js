@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { faker } from "@faker-js/faker";
 
 function createRandomPost() {
@@ -7,7 +7,7 @@ function createRandomPost() {
     body: faker.hacker.phrase(),
   };
 }
-
+//1) create context
 const PostContext = createContext();
 function App() {
   const [posts, setPosts] = useState(() =>
@@ -43,6 +43,7 @@ function App() {
   );
 
   return (
+    // 2. Give the value to this context
     <PostContext.Provider
       value={{
         posts: searchedPosts,
@@ -77,18 +78,17 @@ function App() {
   );
 }
 
-function Header({ posts, onClearPosts, searchQuery, setSearchQuery }) {
+function Header() {
+  // 3. consuming context
+  const { onClearPosts } = useContext(PostContext);
   return (
     <header>
       <h1>
         <span>⚛️</span>The Atomic Blog
       </h1>
       <div>
-        <Results posts={posts} />
-        <SearchPosts
-          searchQuery={searchQuery}
-          setSearchQuery={setSearchQuery}
-        />
+        <Results />
+        <SearchPosts />
         <button onClick={onClearPosts}>Clear posts</button>
       </div>
     </header>

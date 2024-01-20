@@ -10,6 +10,7 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import { useCities } from "../Contexts/CitiesContext";
+import { useGeolocation } from "../../hooks/useGeoLocation";
 
 export default function Map() {
   const { cities } = useCities();
@@ -17,6 +18,11 @@ export default function Map() {
   const [mapPosition, setMapPosition] = useState([40, 0]);
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
   //Here we are using hook to remember previous lat lng so we are using lat lng as dependency array
   useEffect(
     function () {

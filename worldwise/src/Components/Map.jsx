@@ -17,8 +17,9 @@ export default function Map() {
       onClick={() => navigate("form")}
     >
       <MapContainer
-        center={mapPosition}
-        zoom={13}
+        // center={mapPosition}
+        center={[lat, lng]}
+        zoom={10}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -33,7 +34,7 @@ export default function Map() {
           >
             <Popup>
               <span>{city.emoji}</span>
-              <span>{city.cityName} </span>
+              <span>{city.cityName}</span>
             </Popup>
           </Marker>
         ))}

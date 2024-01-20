@@ -63,7 +63,7 @@ function CitiesProvider({ children }) {
       } catch {
         dispatch({
           type: "rejected",
-          payload: "There was error in loading data..",
+          payload: "There was error in loading cities..",
         });
       }
     }
@@ -78,7 +78,10 @@ function CitiesProvider({ children }) {
 
       dispatch({ type: "city/loaded", payload: data });
     } catch {
-      console.log("Error Fetching Cities");
+      dispatch({
+        type: "rejected",
+        payload: "There was error in loading city..",
+      });
     }
   }
   async function createCity(newCity) {

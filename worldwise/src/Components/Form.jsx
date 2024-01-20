@@ -28,7 +28,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geoCodingError, setGeoCodingError] = useState("");
-  const { createCity } = useCities();
+  const { createCity, isLoading } = useCities();
 
   const [lat, lng] = useUrlPosition();
   useEffect(

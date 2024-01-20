@@ -29,7 +29,7 @@ function Form() {
   const [emoji, setEmoji] = useState("");
   const [geoCodingError, setGeoCodingError] = useState("");
   const { createCity, isLoading } = useCities();
-
+  const navigate = useNavigate();
   const [lat, lng] = useUrlPosition();
   useEffect(
     function () {
@@ -65,7 +65,7 @@ function Form() {
   if (!lat && !lng)
     return <Message message="Start By clicking somewhere on map" />;
   if (geoCodingError) return <Message message={geoCodingError} />;
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!date || !cityName) return;
     const newCity = {
@@ -76,7 +76,8 @@ function Form() {
       notes,
       position: { lat, lng },
     };
-    createCity(newCity);
+    await createCity(newCity);
+    navigate("/app/cities");
   }
   return (
     <form

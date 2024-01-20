@@ -12,7 +12,6 @@ import {
 import { useCities } from "../Contexts/CitiesContext";
 
 export default function Map() {
-  const navigate = useNavigate();
   const { cities } = useCities();
   const [searchParams] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([40, 0]);

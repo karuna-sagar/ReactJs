@@ -10,6 +10,8 @@ import Message from "./Message";
 import Spinner from "./Spinner";
 import useUrlPosition from "../../hooks/useUrlPosition";
 import "react-datepicker/dist/react-datepicker.css";
+import { useCities } from "../Contexts/CitiesContext";
+
 export function convertToEmoji(countryCode) {
   const codePoints = countryCode
     .toUpperCase()
@@ -26,6 +28,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geoCodingError, setGeoCodingError] = useState("");
+  const { createCity } = useCities();
 
   const [lat, lng] = useUrlPosition();
   useEffect(
@@ -73,6 +76,7 @@ function Form() {
       notes,
       position: { lat, lng },
     };
+    createCity(newCity);
   }
   return (
     <form

@@ -33,8 +33,18 @@ function reducer(state, action) {
         isLoading: false,
         currentCity: action.payload,
       };
-    case "cities/created":
-    case "cities/deleted":
+    case "city/created":
+      return {
+        ...state,
+        isLoading: false,
+        cities: [...state.cities, action.payload],
+      };
+    case "city/deleted":
+      return {
+        ...state,
+        isLoading: false,
+        cities: state.cities.filter((city) => city.id !== action.payload),
+      };
     case "rejected":
       return {
         ...state,
@@ -50,9 +60,6 @@ function CitiesProvider({ children }) {
     reducer,
     initialStates
   );
-  // const [cities, setCities] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [currentCity, setCurrentCity] = useState({});
   useEffect(function () {
     async function fetchCities() {
       dispatch({ type: "loading" });
@@ -95,19 +102,22 @@ function CitiesProvider({ children }) {
         },
       });
       const data = await res.json();
-      setCities((cities) => [...cities, data]);
+      dispatch({ type: "city/created", payload: data });
     } catch {
-      console.log("There was error in creating city");
+      dispatch({
+        type: "rejected",
+        payload: "There was error in Deleting city..",
+      });
     }
   }
   async function deleteCity(id) {
+    dispatch({ type: "loading" });
     try {
-      setIsLoading(true);
       await fetch(`${BASE_URL}/cities/${id}`, {
         method: "DELETE",
       });
 
-      setCities(cities.filter((city) => city.id !== id));
+      dispatch({ type: "city/deleted", payload: id });
     } catch {
       console.log("There was error in deleting city...");
     } finally {

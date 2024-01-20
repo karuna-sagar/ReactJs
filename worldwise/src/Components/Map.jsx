@@ -40,12 +40,14 @@ export default function Map() {
   );
   return (
     <div className={styles.mapContainer}>
-      <Button
-        type="position"
-        onClick={getPosition}
-      >
-        {isLoadingPosition ? "Loading...." : "Use Your Location"}
-      </Button>
+      {!geolocationPosition && (
+        <Button
+          type="position"
+          onClick={getPosition}
+        >
+          {isLoadingPosition ? "Loading...." : "Use Your Location"}
+        </Button>
+      )}
       <MapContainer
         center={mapPosition}
         zoom={8}

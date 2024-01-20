@@ -9,6 +9,12 @@ function reducer(state, action) {
         user: action.payload,
         isAuthenticated: true,
       };
+    case "logout":
+      return {
+        ...state,
+        user: null,
+        isAuthenticated: false,
+      };
   }
 }
 function AuthProvider({ children }) {

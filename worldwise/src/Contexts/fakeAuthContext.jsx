@@ -1,7 +1,16 @@
 import { createContext, useContext, useReducer } from "react";
 
 const AuthContext = createContext();
-function reducer(state, action) {}
+function reducer(state, action) {
+  switch (action.type) {
+    case "login":
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+      };
+  }
+}
 function AuthProvider({ children }) {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
     reducer,

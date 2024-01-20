@@ -43,7 +43,7 @@ function Form() {
               "that doesn't seem to be city.Click somewhere else 🙁"
             );
           }
-          console.log(data);
+
           setCityName(data.city || data.locality || "");
           setCountry(data.countryName);
           setEmoji(convertToEmoji(data.countryCode));
@@ -57,10 +57,19 @@ function Form() {
     },
     [lat, lng]
   );
+
   if (isLoadingGeocoding) return <Spinner />;
+  if (!lat && !lng)
+    return <Message message="Start By clicking somewhere on map" />;
   if (geoCodingError) return <Message message={geoCodingError} />;
+  function handleSubmit(e) {
+    e.prevenatDefault();
+  }
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit}
+    >
       <div className={styles.row}>
         <label htmlFor="cityName">City name</label>
         <input

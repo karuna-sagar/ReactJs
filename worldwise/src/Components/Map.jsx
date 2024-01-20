@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Map.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
@@ -7,10 +7,17 @@ import { useCities } from "../Contexts/CitiesContext";
 export default function Map() {
   const navigate = useNavigate();
   const { cities } = useCities();
-  const [searchParams, setSearchParam] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const mapLat = searchParams.get("lat");
+  const mapLng = searchParams.get("lng");
+  //Here we are using hook to remember previous lat lng so we are using lat lng as dependency array
+  useEffect(
+    function () {
+      if (mapLat && mapLng) setMapPosition([mapLat, mapLng]);
+    },
+    [mapLat, mapLng]
+  );
   return (
     <div
       className={styles.mapContainer}
@@ -18,8 +25,7 @@ export default function Map() {
     >
       <MapContainer
         center={mapPosition}
-        // center={[lat, lng]}
-        zoom={10}
+        zoom={8}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -38,12 +44,12 @@ export default function Map() {
             </Popup>
           </Marker>
         ))}
-        <ChangeCenter position={[lat || 40, lng || 0]} />
+        <ChangeCenter position={mapPosition} />
       </MapContainer>
     </div>
   );
 }
-
+// leaf map is not providing any feature to set position so we make by ourself
 function ChangeCenter({ position }) {
   const map = useMap();
   map.setView(position);

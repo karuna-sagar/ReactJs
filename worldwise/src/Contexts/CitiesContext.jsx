@@ -11,6 +11,7 @@ const initialStates = {
   cities: [],
   isLoading: false,
   currentCity: {},
+  error: "",
 };
 
 function reducer(state, action) {
@@ -28,6 +29,12 @@ function reducer(state, action) {
       };
     case "cities/created":
     case "cities/deleted":
+    case "rejected":
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      };
     default:
       throw new Error("unknown action type");
   }
@@ -46,11 +53,12 @@ function CitiesProvider({ children }) {
       try {
         const res = await fetch(`${BASE_URL}/cities`);
         const data = await res.json();
-        setCities(data);
+        dispatch({ type: "cities/loader", payload: data });
       } catch {
-        console.log("Error Fetching Cities");
-      } finally {
-        setIsLoading(false);
+        dispatch({
+          type: "rejected",
+          payload: "There was error in loading data..",
+        });
       }
     }
     fetchCities();

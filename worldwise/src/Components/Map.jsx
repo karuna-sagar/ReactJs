@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Map.module.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { MapContainer, TileLayer, Popup, Marker } from "react-leaflet";
+import { MapContainer, TileLayer, Popup, Marker, useMap } from "react-leaflet";
 import { useCities } from "../Contexts/CitiesContext";
 
 export default function Map() {
@@ -17,8 +17,8 @@ export default function Map() {
       onClick={() => navigate("form")}
     >
       <MapContainer
-        // center={mapPosition}
-        center={[lat, lng]}
+        center={mapPosition}
+        // center={[lat, lng]}
         zoom={10}
         scrollWheelZoom={true}
         className={styles.map}
@@ -38,7 +38,14 @@ export default function Map() {
             </Popup>
           </Marker>
         ))}
+        <ChangeCenter position={[lat || 40, lng || 0]} />
       </MapContainer>
     </div>
   );
+}
+
+function ChangeCenter({ position }) {
+  const map = useMap();
+  map.setView(position);
+  return null;
 }

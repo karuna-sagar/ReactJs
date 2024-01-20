@@ -26,7 +26,7 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
   const [geoCodingError, setGeoCodingError] = useState("");
-  const navigate = useNavigate();
+
   const [lat, lng] = useUrlPosition();
   useEffect(
     function () {
@@ -63,7 +63,16 @@ function Form() {
     return <Message message="Start By clicking somewhere on map" />;
   if (geoCodingError) return <Message message={geoCodingError} />;
   function handleSubmit(e) {
-    e.prevenatDefault();
+    e.preventDefault();
+    if (!date || !cityName) return;
+    const newCity = {
+      cityName,
+      country,
+      emoji,
+      date,
+      notes,
+      position: { lat, lng },
+    };
   }
   return (
     <form
@@ -82,11 +91,7 @@ function Form() {
 
       <div className={styles.row}>
         <label htmlFor="date">When did you go to {cityName}?</label>
-        {/* <input
-          id="date"
-          onChange={(e) => setDate(e.target.value)}
-          value={date}
-        /> */}
+
         <DatePicker
           id="date"
           onChange={(date) => setDate(date)}

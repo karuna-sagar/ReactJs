@@ -106,7 +106,7 @@ function CitiesProvider({ children }) {
     } catch {
       dispatch({
         type: "rejected",
-        payload: "There was error in Deleting city..",
+        payload: "There was error in Creating city..",
       });
     }
   }
@@ -119,9 +119,10 @@ function CitiesProvider({ children }) {
 
       dispatch({ type: "city/deleted", payload: id });
     } catch {
-      console.log("There was error in deleting city...");
-    } finally {
-      setIsLoading(false);
+      dispatch({
+        type: "rejected",
+        payload: "There was error in Deleting city..",
+      });
     }
   }
   return (

@@ -12,65 +12,68 @@ import CountryList from "./Components/CountryList";
 import City from "./Components/City";
 import Form from "./Components/Form";
 import { CitiesProvider } from "./Contexts/CitiesContext";
+import { AuthProvider } from "./Contexts/fakeAuthContext";
 export default function App() {
   return (
-    <CitiesProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            index
-            element={<HomePage />}
-          />
-          <Route
-            path="product"
-            element={<Product />}
-          />
-
-          <Route
-            path="pricing"
-            element={<Pricing />}
-          />
-          <Route
-            path="login"
-            element={<Login />}
-          />
-
-          <Route
-            path="*"
-            element={<PageNotFound />}
-          />
-          <Route
-            path="app"
-            element={<AppLayout />}
-          >
+    <AuthProvider>
+      <CitiesProvider>
+        <BrowserRouter>
+          <Routes>
             <Route
               index
-              element={
-                <Navigate
-                  replace
-                  to="cities"
-                />
-              }
+              element={<HomePage />}
             />
             <Route
-              path="cities"
-              element={<CityList />}
+              path="product"
+              element={<Product />}
+            />
+
+            <Route
+              path="pricing"
+              element={<Pricing />}
             />
             <Route
-              path="cities/:id"
-              element={<City />}
+              path="login"
+              element={<Login />}
+            />
+
+            <Route
+              path="*"
+              element={<PageNotFound />}
             />
             <Route
-              path="countries"
-              element={<CountryList />}
-            />
-            <Route
-              path="form"
-              element={<Form />}
-            />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </CitiesProvider>
+              path="app"
+              element={<AppLayout />}
+            >
+              <Route
+                index
+                element={
+                  <Navigate
+                    replace
+                    to="cities"
+                  />
+                }
+              />
+              <Route
+                path="cities"
+                element={<CityList />}
+              />
+              <Route
+                path="cities/:id"
+                element={<City />}
+              />
+              <Route
+                path="countries"
+                element={<CountryList />}
+              />
+              <Route
+                path="form"
+                element={<Form />}
+              />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </CitiesProvider>
+    </AuthProvider>
   );
 }

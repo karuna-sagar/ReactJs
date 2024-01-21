@@ -3,18 +3,26 @@ import Button from "../Components/Button";
 import PageNav from "../Components/PageNav";
 import { useAuth } from "../Contexts/fakeAuthContext";
 import styles from "./Login.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState("jack@example.com");
   const [password, setPassword] = useState("qwerty");
   const navigate = useNavigate();
-  const { login, logout } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   function handleSubmit(e) {
     e.preventDefault();
     if (email && password) login(email, password);
-    navigate("/app");
   }
+
+  useEffect(
+    function () {
+      if (isAuthenticated) {
+        navigate("/app", { replace: true });
+      }
+    },
+    [isAuthenticated, navigate]
+  );
   return (
     <main
       className={styles.login}

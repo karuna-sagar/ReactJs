@@ -13,6 +13,7 @@ import City from "./Components/City";
 import Form from "./Components/Form";
 import { CitiesProvider } from "./Contexts/CitiesContext";
 import { AuthProvider } from "./Contexts/fakeAuthContext";
+import { ProtectedRoute } from "./pages/ProtectedRoute";
 export default function App() {
   return (
     <AuthProvider>
@@ -43,7 +44,11 @@ export default function App() {
             />
             <Route
               path="app"
-              element={<AppLayout />}
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
             >
               <Route
                 index

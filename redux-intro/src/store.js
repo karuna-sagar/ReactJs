@@ -94,7 +94,6 @@ function payLoan() {
     type: "account/payLoan",
   };
 }
-
 store.dispatch(deposit(500));
 store.dispatch(withdraw(200));
 store.dispatch(requestLoan(500, "buy a new car"));
@@ -103,7 +102,7 @@ console.log(store.getState());
 
 function createCustomer(fullName, nationalID) {
   return {
-    type: "created/createCustomer",
+    type: "customer/createCustomer",
     payload: {
       fullName,
       nationalID,
@@ -113,7 +112,10 @@ function createCustomer(fullName, nationalID) {
 }
 function updateName(fullName) {
   return {
-    type: "updated/updateName",
+    type: "customer/updateName",
     payload: fullName,
   };
 }
+store.dispatch(createCustomer("Karuna sagar", "12"));
+store.dispatch(deposit(500));
+console.log(store.getState());

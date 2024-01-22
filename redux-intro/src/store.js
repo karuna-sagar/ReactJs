@@ -5,7 +5,7 @@ const initialItems = {
   loanPurpose: "",
 };
 
-function reducer(state, action) {
+function reducer(state = initialItems, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -28,4 +28,6 @@ function reducer(state, action) {
 
 const store = createStore(reducer);
 store.dispatch({ type: "account/deposit", payload: 500 });
-console.log(store.getStatus());
+console.log(store.getState());
+store.dispatch({ type: "account/withdraw", payload: 200 });
+console.log(store.getState());

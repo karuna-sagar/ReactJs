@@ -53,6 +53,16 @@ function reducer(state = initialItems, action) {
 function deposit(amount) {
   return { type: "account/deposit", payload: amount };
 }
-function withdraw() {}
-function requestLoan() {}
+function withdraw(amount) {
+  return { type: "account/withdraw", payload: amount };
+}
+function requestLoan() {
+  return {
+    type: "account/requestLoan",
+    payload: {
+      amount: 1000,
+      purpose: "Buy a new Car",
+    },
+  };
+}
 function payLoan() {}

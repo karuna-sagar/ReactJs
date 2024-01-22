@@ -1,11 +1,16 @@
 import { createStore } from "redux";
-const initialItems = {
+const initialStatesAccount = {
   balance: 0,
   loan: 0,
   loanPurpose: "",
 };
 
-function reducer(state = initialItems, action) {
+const initialStateCustomer = {
+  fullName: "",
+  nationalID: "",
+  createdAt: "",
+};
+function accountReducer(state = initialStatesAccount, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -32,7 +37,13 @@ function reducer(state = initialItems, action) {
   }
 }
 
-const store = createStore(reducer);
+const customerReducer (state=initialStateCustomer,action){
+  switch(action.type){
+    case "customer/createCustomer":
+      return {...state,fullName:action.payload.fullName,countr}
+  }
+}
+const store = createStore(accountReducer);
 // store.dispatch({ type: "account/deposit", payload: 500 });
 // console.log(store.getState());
 // store.dispatch({ type: "account/withdraw", payload: 200 });
@@ -76,3 +87,20 @@ store.dispatch(withdraw(200));
 store.dispatch(requestLoan(500, "buy a new car"));
 store.dispatch(payLoan());
 console.log(store.getState());
+
+function createCustomer(fullName, nationalID) {
+  return {
+    type: "created/createCustomer",
+    payload: {
+      fullName,
+      nationalID,
+      createdAt: new Date().toISOString(),
+    },
+  };
+}
+function updateName(fullName) {
+  return {
+    type: "updated/updateName",
+    payload: fullName,
+  };
+}

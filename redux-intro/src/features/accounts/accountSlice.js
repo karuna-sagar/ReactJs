@@ -3,7 +3,7 @@ const initialStatesAccount = {
   loan: 0,
   loanPurpose: "",
 };
-function accountReducer(state = initialStatesAccount, action) {
+export default function accountReducer(state = initialStatesAccount, action) {
   switch (action.type) {
     case "account/deposit":
       return { ...state, balance: state.balance + action.payload };
@@ -29,13 +29,13 @@ function accountReducer(state = initialStatesAccount, action) {
       return state;
   }
 }
-function deposit(amount) {
+export function deposit(amount) {
   return { type: "account/deposit", payload: amount };
 }
-function withdraw(amount) {
+export function withdraw(amount) {
   return { type: "account/withdraw", payload: amount };
 }
-function requestLoan(amount, purpose) {
+export function requestLoan(amount, purpose) {
   return {
     type: "account/requestLoan",
     payload: {
@@ -44,7 +44,7 @@ function requestLoan(amount, purpose) {
     },
   };
 }
-function payLoan() {
+export function payLoan() {
   return {
     type: "account/payLoan",
   };

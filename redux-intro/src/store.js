@@ -26,4 +26,6 @@ function reducer(state, action) {
   }
 }
 
-c;
+const store = createStore(reducer);
+store.dispatch({ type: "account/deposit", payload: 500 });
+console.log(store.getStatus());

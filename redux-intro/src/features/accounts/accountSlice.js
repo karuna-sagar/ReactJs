@@ -1,4 +1,4 @@
-import { autoBatchEnhancer, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   balance: 0,
   loan: 0,
@@ -7,18 +7,34 @@ const initialState = {
 };
 
 const accountSlice = createSlice({
-  name:'account',
+  name: "account",
   initialState,
-  reducers:{
-    deposit(state,action){
-      state.balance = state.balance + action.payload
+  reducers: {
+    deposit(state, action) {
+      state.balance = state.balance + action.payload;
     },
-    withdraw(state,action){
+    withdraw(state, action) {
       state.balance = state.balance - action.payload;
     },
-    requestLoan(state,action){
-      if(state.loan > 0) return 
-      state.loan = 
-    }
-  }
-})
+    requestLoan: {
+      prepare(amount, purpose) {
+        return {
+          payload: { amount, purpose },
+        };
+      },
+      reducer(state, action) {
+        if (state.loan > 0) return;
+        state.loan = action.payload.amount;
+        state.loanPurpose = action.payload.purpose;
+        state.balance = action.payload.amount + state.balance;
+      },
+    },
+    payLoan(state, action) {
+      state.balance = state.balance - state.loan;
+      state.loan = 0;
+      state.loanPurpose = "";
+    },
+  },
+});
+export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+export default accountSlice.reducer;

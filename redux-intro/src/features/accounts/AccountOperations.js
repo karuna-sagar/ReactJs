@@ -64,7 +64,7 @@ function AccountOperations() {
             onClick={handleDeposit}
             disabled={isLoading}
           >
-            {isLoading ? "Converting..." : ` Deposit $ {depositAmount}`}
+            {isLoading ? "Converting..." : ` Deposit  ${depositAmount}`}
           </button>
         </div>
 

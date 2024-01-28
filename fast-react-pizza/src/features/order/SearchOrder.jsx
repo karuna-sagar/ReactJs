@@ -20,3 +20,4 @@ export default function SearchOrder() {
     </form>
   );
 }
+// AIML  code for handling the search order functionality:

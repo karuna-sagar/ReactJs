@@ -39,7 +39,8 @@ function CreateOrder() {
     <div>
       <h2>Ready to order? Let's go!</h2>
 
-      <Form>
+      <Form method="POST">
+        {/* <Form method="POST" action="order/new"> */}
         <div>
           <label>First Name</label>
           <input
@@ -90,4 +91,10 @@ function CreateOrder() {
   );
 }
 
+export async function action({ request }) {
+  const formatData = await request.formatData();
+  const data = Object.fromEntries(formatData);
+  console.log(data);
+  return null;
+}
 export default CreateOrder;

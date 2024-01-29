@@ -92,8 +92,8 @@ function CreateOrder() {
 }
 
 export async function action({ request }) {
-  const formatData = await request.formData();
-  const data = Object.fromEntries(formatData);
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
   console.log(data);
   return null;
 }

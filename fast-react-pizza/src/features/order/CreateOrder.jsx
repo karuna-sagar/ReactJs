@@ -92,7 +92,7 @@ function CreateOrder() {
 }
 
 export async function action({ request }) {
-  const formatData = await request.formatData();
+  const formatData = await request.formData();
   const data = Object.fromEntries(formatData);
   console.log(data);
   return null;

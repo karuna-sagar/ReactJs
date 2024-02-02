@@ -82,7 +82,11 @@ function CreateOrder() {
           />
           <label htmlFor="priority">Want to yo give your order priority?</label>
         </div>
-
+        <input
+          type="hidden"
+          name="cart"
+          value={JSON.stringify(cart)}
+        />
         <div>
           <button>Order now</button>
         </div>
@@ -98,4 +102,3 @@ export async function action({ request }) {
   return null;
 }
 export default CreateOrder;
-

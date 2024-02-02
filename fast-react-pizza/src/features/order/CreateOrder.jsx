@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Form } from "react-router-dom";
-
+import { Form, redirect } from "react-router-dom";
+import { createOrder } from "../../services/apiRestaurant";
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -98,7 +98,15 @@ function CreateOrder() {
 export async function action({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-  console.log(data);
-  return null;
+  // console.log(data);
+  const order = {
+    ...data,
+    cart: JSON.parse(data.cart),
+    priority: data.priority === "on",
+  };
+  console.log(order);
+  const newOrder = await createOrder(order);
+  console.log(newOrder.id);
+  return redirect(`/order/${newOrder.id}`);
 }
 export default CreateOrder;

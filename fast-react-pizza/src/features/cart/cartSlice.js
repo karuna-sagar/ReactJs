@@ -15,8 +15,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {},
-    addItem(state, action) {},
-    addItem(state, action) {},
-    addItem(state, action) {},
+    deleteItem(state, action) {},
+    increaseItemQuantity(state, action) {},
+    decreaseItemQuantity(state, action) {},
+    clearItem(state, action) {},
   },
 });

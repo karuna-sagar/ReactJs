@@ -14,6 +14,7 @@ function MenuItem({ pizza }) {
       unitPrice,
       totalPrice: unitPrice * 1,
     };
+    console.log(id);
     dispatch(addItem(newItem));
   }
   return (
@@ -40,7 +41,7 @@ function MenuItem({ pizza }) {
           {!soldOut && (
             <Button
               type="small"
-              onclick={handleAddToCart}
+              onClick={handleAddToCart}
             >
               Add to cart
             </Button>

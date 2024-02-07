@@ -41,6 +41,7 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
+
           {isInCart && <DeleteItem pizzaId={id} />}
           {!soldOut && !isInCart && (
             <Button

@@ -10,6 +10,7 @@ function Cart() {
   const username = useSelector((state) => state.user.username);
   const dispatch = useDispatch();
   const cart = useSelector(getCart);
+
   if (!cart.length) return <EmptyCart />;
   return (
     <div className="px-4 py-3">

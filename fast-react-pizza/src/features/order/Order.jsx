@@ -4,11 +4,13 @@ import OrderItem from "./OrderItem";
 import { useEffect } from "react";
 import { useFetcher, useLoaderData } from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
+
 import {
   calcMinutesLeft,
   formatCurrency,
   formatDate,
 } from "../../utils/helpers";
+import UpdateOrder from "./UpdateOrder";
 
 //Pura Menu ko hi fetch kar liya bina waha gye BC
 function Order() {
@@ -90,6 +92,7 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder order={order} />}
     </div>
   );
 }

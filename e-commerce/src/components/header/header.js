@@ -10,6 +10,16 @@ const Header = () => {
                         <div className="col-sm-2">
                             <img src={Logo} alt="Logo" />
                         </div>
+                        <div className="col-sm-5">
+                            <div className="headerSearch d-flex align-items-center">
+                                <div className="selectDrop">
+                                    All Categories
+                                </div>
+                                <div className="search">
+                                    <input type="text" placeholder='Search for item..' />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </header>

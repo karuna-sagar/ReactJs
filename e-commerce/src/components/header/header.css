@@ -37,6 +37,15 @@ header .headerSearch .search input {
   height: 50px;
   border: 0px;
   outline: none !important;
+  font-size: 18px;
+  position: relative;
+}
+header .headerSearch .search .searchIcon {
+  position: absolute;
+  top: 14px;
+  right: 26px;
+  opacity: 0.5;
+  font-size: 33px;
 }
 
 /* header {

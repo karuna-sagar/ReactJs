@@ -7,7 +7,7 @@ const Select = () => {
                 <div className="searchField">
                     <input type="text" />
                 </div>
-                <ul>
+                <ul className='searchResults'>
                     <li>Milks and Dairies</li>
                     <li>Wines & Drinks</li>
                     <li>Clothing & beauty</li>

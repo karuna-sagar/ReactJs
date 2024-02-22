@@ -3,8 +3,8 @@ import '../selectDrop/select.css'
 const Select = () => {
     return (
         <>
-            <div className="selecrDrop cursor position-relative">
-                <span>All Categories</span>
+            <div className="selectDropWrapper cursor position-relative">
+                <span className='openSelect' >All Categories</span>
                 <div className="selectDrop">
                     <div className="searchField">
                         <input type="text" />

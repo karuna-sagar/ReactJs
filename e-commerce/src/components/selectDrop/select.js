@@ -17,20 +17,20 @@ const Select = () => {
                             <input type="text" />
                         </div>
                         <ul className='searchResults'>
-                            <li>Milks and Dairies</li>
-                            <li>Wines & Drinks</li>
-                            <li>Clothing & beauty</li>
-                            <li>Fresh Seafood</li>
-                            <li>Pet Foods & Toy</li>
-                            <li>Fast food</li>
-                            <li>Baking material</li>
-                            <li>Vegetables</li>
-                            <li>Fresh Fruit</li>
-                            <li>Bread and Juice</li>
-                            <li>Milks and Dairies</li>
-                            <li>Wines & Drinks</li>
-                            <li>Clothing & beauty</li>
-                            <li>Fresh Seafood</li>
+                            <li onClick={() => setIsOpen(false)} >Milks and Dairies</li>
+                            <li onClick={() => setIsOpen(false)} >Wines & Drinks</li>
+                            <li onClick={() => setIsOpen(false)} >Clothing & beauty</li>
+                            <li onClick={() => setIsOpen(false)} >Fresh Seafood</li>
+                            <li onClick={() => setIsOpen(false)} >Pet Foods & Toy</li>
+                            <li onClick={() => setIsOpen(false)} >Fast food</li>
+                            <li onClick={() => setIsOpen(false)} >Baking material</li>
+                            <li onClick={() => setIsOpen(false)} >Vegetables</li>
+                            <li onClick={() => setIsOpen(false)} >Fresh Fruit</li>
+                            <li onClick={() => setIsOpen(false)} >Bread and Juice</li>
+                            <li onClick={() => setIsOpen(false)} >Milks and Dairies</li>
+                            <li onClick={() => setIsOpen(false)} >Wines & Drinks</li>
+                            <li onClick={() => setIsOpen(false)} >Clothing & beauty</li>
+                            <li onClick={() => setIsOpen(false)} >Fresh Seafood</li>
                         </ul>
                     </div>
                 }

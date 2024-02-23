@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import '../selectDrop/select.css'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 const Select = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isIndex, setIsIndex] = useState(0);
@@ -14,7 +15,7 @@ const Select = () => {
 
         <>
             <div className="selectDropWrapper cursor position-relative">
-                <span className='openSelect' onClick={openSelect} >All Categories</span>
+                <span className='openSelect' onClick={openSelect} >  All Categories <KeyboardArrowDownIcon className='arrow' /></span>
 
                 {isOpen === true &&
                     <div className="selectDrop">

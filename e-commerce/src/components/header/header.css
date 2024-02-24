@@ -58,7 +58,23 @@ header .headerSearch .search .searchIcon {
   opacity: 0.5;
   font-size: 30px !important;
 }
-
+header .countryWrapper .selectDropWrapper {
+  width: 200px !important;
+  height: 50px;
+  padding-left: 10px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ececec;
+  -webkit-box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+}
+header .countryWrapper .selectDropWrapper .openSelect {
+  width: 100%;
+  font-weight: 600;
+}
+header .countryWrapper .selectDropWrapper .selectDrop {
+  left: 0px !important;
+}
 /* header {
     width: 100%;
     height: auto;

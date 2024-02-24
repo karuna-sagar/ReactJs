@@ -5,7 +5,7 @@ import { ClickAwayListener } from '@mui/base/ClickAwayListener';
 
 const Select = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState("All categories");
+    const [selectedItem, setSelectedItem] = useState(props.placeholder);
     const [isIndex, setIsIndex] = useState(0);
     function openSelect() {
         setIsOpen(!isOpen)
@@ -29,10 +29,11 @@ const Select = (props) => {
                                 <input type="text" placeholder="Search Here..." />
                             </div>
                             <ul className='searchResults'>
+                                <li key={0} onClick={() => closeSelect(0, props.placeholder)} className={`${isIndex === 0 ? 'active' : ""}`} >{props.placeholder}</li>
                                 {
                                     props.data.map((item, index) => {
                                         return (
-                                            <li onClick={() => closeSelect(index, item)} className={`${isIndex === index ? 'active' : ""}`} >{item}</li>
+                                            <li key={index} onClick={() => closeSelect(index + 1, item)} className={`${isIndex === index + 1 ? 'active' : ""}`} >{item}</li>
                                         )
                                     })
                                 }

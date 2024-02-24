@@ -75,6 +75,9 @@ header .countryWrapper .selectDropWrapper .openSelect {
 header .countryWrapper .selectDropWrapper .selectDrop {
   left: 0px !important;
 }
+header .countryWrapper .openSelect {
+  color: #279a65 !important ;
+}
 /* header {
     width: 100%;
     height: auto;

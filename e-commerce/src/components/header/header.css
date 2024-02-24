@@ -78,6 +78,41 @@ header .countryWrapper .selectDropWrapper .selectDrop {
 header .countryWrapper .openSelect {
   color: #279a65 !important ;
 }
+header .headerTabs {
+  padding-left: 40px;
+}
+header .headerTabs li {
+  position: relative;
+  margin-left: 20px;
+}
+header .headerTabs li span {
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+}
+header .headerTabs li span:hover {
+  text-decoration: none;
+}
+header .headerTabs li span * {
+  color: #000;
+}
+header .headerTabs li span img {
+  margin-right: 10px;
+}
+header .headerTabs li span.badge {
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-weight: 400;
+  position: absolute;
+  top: -16px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px !important;
+}
+
 /* header {
     width: 100%;
     height: auto;

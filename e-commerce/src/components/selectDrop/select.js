@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import '../selectDrop/select.css'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { ClickAwayListener } from '@mui/base/ClickAwayListener';
-import LocationOnOutlinedIcon from '@mui/icons-material/LocationOnOutlined';
+
 const Select = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(props.placeholder);
@@ -22,7 +22,7 @@ const Select = (props) => {
             <ClickAwayListener onClickAway={() => setIsOpen(false)}>
 
                 <div className="selectDropWrapper cursor position-relative">
-                    <LocationOnOutlinedIcon style={{ opacity: "0.5" }} />
+                    {props.icon}
                     <span className='openSelect' onClick={openSelect} >  {selectedItem} <KeyboardArrowDownIcon className='arrow' /></span>
 
                     {isOpen === true &&

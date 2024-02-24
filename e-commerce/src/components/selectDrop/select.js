@@ -26,7 +26,7 @@ const Select = () => {
                     {isOpen === true &&
                         <div className="selectDrop">
                             <div className="searchField">
-                                <input type="text" />
+                                <input type="text" placeholder="Search Here..." />
                             </div>
                             <ul className='searchResults'>
                                 <li onClick={() => closeSelect(0, 'All Categories')} className={`${isIndex === 0 ? 'active' : ""}`} >All Categories</li>

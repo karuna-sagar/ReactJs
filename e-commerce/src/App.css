@@ -8,3 +8,6 @@
 body {
   font-family: "Roboto", sans-serif;
 }
+.container-fluid {
+  padding: 0px 45px;
+}

@@ -28,15 +28,15 @@ const NewExpenseForm = () => {
     return (
         <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
-                <div className="new-expense__control" onChange={titleChangeHandler}>
+                <div className="new-expense__control" value={enteredTitle} onChange={titleChangeHandler}>
                     <label>Title</label>
                     <input type="text" />
                 </div>
-                <div className="new-expense__control" onChange={amountChangeHandler}>
+                <div className="new-expense__control" value={enteredAmount} onChange={amountChangeHandler}>
                     <label>Amount</label>
                     <input type="text" min="0.01" max="0.01" />
                 </div>
-                <div className="new-expense__control" onChange={dateChangeHandler}>
+                <div className="new-expense__control" value={enteredDate} onChange={dateChangeHandler}>
                     <label>Date</label>
                     <input type="date" min="2019-01-01" max="2022-12-31" />
                 </div>

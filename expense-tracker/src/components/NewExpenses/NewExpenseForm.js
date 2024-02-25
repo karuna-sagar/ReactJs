@@ -20,6 +20,9 @@ const NewExpenseForm = () => {
             amount: enteredAmount,
             date: new Date(enteredDate)
         }
+        setEnteredAmount('')
+        setEnteredTitle('')
+        setEnteredDate('')
         console.log(expenseData);
     }
     return (

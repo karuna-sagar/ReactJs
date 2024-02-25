@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ExpenseItem() {
+function ExpenseItem(props) {
     return (
-        <div>
-            hello ji sir ji
+        <div className='expense-item'>
+            <div>{props.date.toISOString()}</div>
         </div>
     )
 }

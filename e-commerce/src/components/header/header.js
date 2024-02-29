@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './Header.css'
+import '../header/Header.css'
 import Logo from '../../assets/images/logo.svg'
 import SearchIcon from '@mui/icons-material/Search';
 import Select from '../selectDrop/select';
@@ -57,6 +57,7 @@ const Header = () => {
                         <div className="col-sm-2">
                             <img src={Logo} alt="Logo" />
                         </div>
+                        {/* headerSearch start here */}
                         <div className="col-sm-5">
                             <div className="headerSearch d-flex align-items-center">
                                 <Select data={categories} placeholder="All Categories" />
@@ -67,35 +68,35 @@ const Header = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-5">
-                            <div className='countryWrapper d-flex align-items-center'>
+                        <div className="col-sm-5 d-flex align-items-center">
+                            <div className='countryWrapper '>
                                 <Select data={countryList} placeholder="Your Location" icon={<LocationOnOutlinedIcon style={{ opacity: "0.5" }} />} />
                             </div>
                             <ul className='list list-inline mb-0 headerTabs'>
                                 <li className='list-inline-item'>
                                     <span>
-                                        <img src={IconCompare} />
+                                        <img src={IconCompare} alt='Compare' />
                                         <span className='badge bg-success rounded-circle'>3</span>
                                         Compare
                                     </span>
                                 </li>
                                 <li className='list-inline-item'>
                                     <span>
-                                        <img src={IconHeart} />
+                                        <img src={IconHeart} alt='Heart' />
                                         <span className='badge bg-success rounded-circle'>3</span>
                                         Wishlist
                                     </span>
                                 </li>
                                 <li className='list-inline-item'>
                                     <span>
-                                        <img src={IconCart} />
+                                        <img src={IconCart} alt='Cart' />
                                         <span className='badge bg-success rounded-circle'>3</span>
                                         Cart
                                     </span>
                                 </li>
                                 <li className='list-inline-item'>
                                     <span>
-                                        <img src={IconUser} />
+                                        <img src={IconUser} alt='User' />
                                         <span className='badge bg-success rounded-circle'>3</span>
                                         Account
                                     </span>
@@ -112,3 +113,4 @@ const Header = () => {
 }
 
 export default Header
+

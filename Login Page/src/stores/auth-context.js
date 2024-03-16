@@ -5,7 +5,7 @@ const AuthContext = React.createContext({
     onLogout: () => { },
     onLogin: (email, password) => { }
 })
-const AuthContextProvider = (props) => {
+export const AuthContextProvider = (props) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const loginHandler = (email, password) => {
         localStorage.setItem('isLoggedIn', '1')

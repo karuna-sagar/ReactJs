@@ -38,18 +38,20 @@ const Login = (props) => {
     value: '',
     isValid: null,
   })
-  // useEffect(() => {
-  //   const identifier = setTimeout(() => {
-  //     console.log("Check for Valididty");
-  //     setFormIsValid(
-  //       enteredEmail.includes('@') && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
-  //   return () => {
-  //     console.log('CHECKUP');
-  //     clearTimeout(identifier)
-  //   }
-  // }, [enteredEmail, enteredPassword]);
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("Check for Valididty");
+      setFormIsValid(
+        emailIsValid && passwordIsValid
+      );
+    }, 500);
+    return () => {
+      console.log('CHECKUP');
+      clearTimeout(identifier)
+    }
+  }, [emailIsValid, passwordIsValid]);
   const emailChangeHandler = (event) => {
     // setEnteredEmail(event.target.value);
     dispatchEmail({ type: 'USER_INPUT', val: event.target.value });

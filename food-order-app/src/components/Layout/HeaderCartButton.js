@@ -1,6 +1,6 @@
 import React from 'react'
 
-function HandleCartButton() {
+function HeaderCartButton() {
   return (
     <div>
 
@@ -8,4 +8,4 @@ function HandleCartButton() {
   )
 }
 
-export default HandleCartButton
+export default HeaderCartButton

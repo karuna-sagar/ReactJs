@@ -31,7 +31,7 @@ const AvailableMeals = () => {
     return (
 
         <section>
-            <ul>
+            <ul className={classes.meals}>
                 {MealsList}
             </ul>
         </section>

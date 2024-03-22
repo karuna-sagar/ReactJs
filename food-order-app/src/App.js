@@ -14,8 +14,8 @@ function App() {
   }
   return (
     <React.Fragment>
-      <Cart />
-      <Header />
+      {CartIsShown && <Cart />}
+      <Header onShowCart={showCartHandler} />
       <main>
         <Meals />
       </main>

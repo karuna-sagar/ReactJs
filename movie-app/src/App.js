@@ -10,9 +10,9 @@ function App() {
   async function fetchMoviesHandler() {
     setIsLoading(true)
     try {
-      const response = await fetch('https://swapi.dev/api/films/')
+      const response = await fetch('https://swapi.dev/api/fil/')
       if (!response.ok) {
-        throw new Error("Something wen wring");
+        throw new Error("Something went wrong");
       }
       const data = await response.json();
 

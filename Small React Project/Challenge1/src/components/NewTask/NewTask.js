@@ -18,7 +18,7 @@ const NewTask = (props) => {
         'Content-Type': 'application/json',
       },
       body: { text: taskText }
-    }, createdTask)
+    }, createdTask.bind(null, taskText))
 
   };
 

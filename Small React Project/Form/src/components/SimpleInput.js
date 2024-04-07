@@ -6,6 +6,7 @@ const SimpleInput = (props) => {
   }
   const submissionHandler = event => {
     event.preventDefault();
+    console.log(enteredName);
   }
   return (
     <form onSubmit={submissionHandler} >

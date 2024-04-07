@@ -19,9 +19,10 @@ const SimpleInput = (props) => {
     setEnteredName('');
     // nameInputRef.current.value = '';  DONT ideal they manipulate  the DOM directly
   }
+  const nameInputClasses = enteredNameIsValid ? 'form-control' : 'form-control invalid'
   return (
     <form onSubmit={submissionHandler} >
-      <div className='form-control'>
+      <div className={nameInputClasses}>
         <label htmlFor='name'>Your Name</label>
         <input type='text' id='name' onChange={nameInputChangeHandler} ref={nameInputRef} value={enteredName} />
         {!enteredNameIsValid && <p className='error-text'>Name must not be empty</p>}

@@ -7,11 +7,14 @@ const SimpleInput = (props) => {
   }
   const submissionHandler = event => {
     event.preventDefault();
+    if (enteredName.trim === '') {
+      return
+    }
     console.log(enteredName);
     const enteredValue = nameInputRef.current.value;
     console.log(enteredValue)
     setEnteredName('');
-    nameInputRef.current.value = '';
+    // nameInputRef.current.value = '';  DONT ideal they manipulate  the DOM directly
   }
   return (
     <form onSubmit={submissionHandler} >

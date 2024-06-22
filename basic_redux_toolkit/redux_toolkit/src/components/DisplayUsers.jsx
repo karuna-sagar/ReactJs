@@ -1,57 +1,52 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { MdDeleteForever } from "react-icons/md";
 
 function DisplayUsers() {
+    const data = useSelector((state) => {
+        return state.users
+    });
+    console.log(data)
     return (
         <Wrapper>
-            <h1>Hii</h1>
+            {
+                data.map((user, id) => {
+                    return <li key={id}>
+                        {user}
+                        <button className="delete-btn">
+                            <MdDeleteForever className="delete-icon" />
+
+                        </button>
+                    </li>
+                })
+            }
         </Wrapper>
     )
 }
 const Wrapper = styled.section`
-  nav {
-    margin: 3rem 0;
-    background: #f9f9f9;
-    padding: 1rem 0;
-  }
-  nav .menuItems {
-    list-style: none;
+  li{
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-  }
-  nav .menuItems li {
+    padding: 1rem
+    border-bottom: 1px solid #eee;
+    &:first-child{
+        border-top: 1px solid #eee
+    }
     margin: 1.6rem 5rem;
   }
-  nav .menuItems li a {
-    text-decoration: none;
-    color: #8f8f8f;
-    font-size: 24px;
-    font-weight: 400;
-    transition: all 0.5s ease-in-out;
-    position: relative;
-    text-transform: uppercase;
+  .delete-btn {
+    background-color: transparent;
+    border: none;
   }
-  nav .menuItems li a::before {
-    content: attr(data-item);
-    transition: 0.5s;
-    color: #8254ff;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 0;
-    overflow: hidden;
-  }
-  nav .menuItems li a:hover::before {
-    width: 100%;
-    transition: all 0.5s ease-in-out;
-  }
-
-  @media screen and (max-width: 998px) {
-    nav .menuItems li {
-      margin: 0.6rem 5rem;
-    }
+  .delete-icon {
+    font-size: 2.6rem;
+    color: #f12711;
+    filter: drop-shadow(0.2rem 0.2rem 0.5rem rgb(255 0 0 / 0.2));
+    cursor: pointer;
   }
 `;
+
+
 export default DisplayUsers

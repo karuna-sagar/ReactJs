@@ -4,6 +4,7 @@ import DeleteUser from "./DeleteUser"
 
 import styled from "styled-components";
 import { addUser } from "../store/slice/UserSlice";
+import DisplayUsers from "./DisplayUsers";
 function UserDetails() {
   const dispatch = useDispatch()
   const addNewUser = (name) => {
@@ -19,6 +20,11 @@ function UserDetails() {
           </div>
           <button className="btn add-btn" onClick={() => addNewUser(fakeUserData())} >Add New Users</button>
         </div>
+        <ul>
+
+          <DisplayUsers />
+        </ul>
+
         <hr />
         <DeleteUser />
       </div>

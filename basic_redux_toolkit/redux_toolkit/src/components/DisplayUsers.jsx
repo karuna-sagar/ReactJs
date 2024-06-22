@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { MdDeleteForever } from "react-icons/md";
-import DeleteUser from "./DeleteUser";
+
 import { removeUser } from "../store/slice/UserSlice";
 
 function DisplayUsers() {

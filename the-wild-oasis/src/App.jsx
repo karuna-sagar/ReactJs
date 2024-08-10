@@ -21,8 +21,8 @@ function App() {
         <Heading>The Wild Oasis</Heading>
         <BUTTON onClick={() => alert('click in')}>Check in</BUTTON>
         <BUTTON onClick={() => alert('check out')}>Check Out</BUTTON>
-        <Input type='number' placeholder="Number of guests" />
-        <Input type='number' placeholder="Number of guests" />
+        <Input type="number" placeholder="Number of guests" />
+        <Input type="number" placeholder="Number of guests" />
       </StyledApp>
     </>
   )

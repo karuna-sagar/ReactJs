@@ -2,6 +2,7 @@
 import styled from 'styled-components'
 import MainNav from '../ui/MainNav';
 import Logo from '../ui/Logo';
+import Uploader from '../data/Uploader';
 // import Logo from "./Logo"
 // import MainNav from "./MainNav"
 
@@ -19,6 +20,7 @@ function Sidebar() {
         <StyledSidebar>
             <Logo />
             <MainNav />
+            <Uploader />
         </StyledSidebar>
     )
 }

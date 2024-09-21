@@ -5,6 +5,7 @@ import { getCabins } from "../services/apiCabins";
 import CabinTable from "../features/cabins/CabinTable";
 import CreateCabinForm from "../features/cabins/CreateCabinForm";
 import Button from "../ui/Button";
+import CabinTableOperations from "../features/cabins/CabinTableOperations";
 
 function Cabins() {
   const [showForm, setShowForm] = useState(false);
@@ -16,7 +17,7 @@ function Cabins() {
     <>
       <Row type="horizontal">
         <Heading as="h1">All cabins</Heading>
-        <p>TEST</p>
+        <CabinTableOperations />
       </Row>
       <Row>
         <CabinTable />

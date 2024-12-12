@@ -31,7 +31,7 @@ function UpdatePasswordForm() {
             required: "This field is required",
             minLength: {
               value: 8,
-              message: "Password needs a minimum of 8 characters",
+              message: "New Password needs a minimum of 8 characters",
             },
           })}
         />
@@ -54,7 +54,11 @@ function UpdatePasswordForm() {
         />
       </FormRow>
       <FormRow>
-        <Button onClick={reset} type="reset" variation="secondary">
+        <Button
+          onClick={reset}
+          type="reset"
+          variation="secondary"
+        >
           Cancel
         </Button>
         <Button disabled={isUpdating}>Update password</Button>

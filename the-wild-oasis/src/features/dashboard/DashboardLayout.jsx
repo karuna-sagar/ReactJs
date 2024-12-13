@@ -11,9 +11,10 @@ function DashboardLayout() {
   return (
     <StyledDashboardLayout>
       <div>statics</div>
-      <div>Today's Activity</div>
+      <div>Today Activity</div>
       <div>Chart say duration</div>
       <div>Chart sales</div>
     </StyledDashboardLayout>
   );
 }
+export default DashboardLayout;

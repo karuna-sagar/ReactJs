@@ -28,37 +28,37 @@ const startDataLight = [
   },
   {
     duration: "2 nights",
-    value: 2,
+    value: 1,
     color: "#f97316",
   },
   {
     duration: "3 nights",
-    value: 3,
+    value: 2,
     color: "#eab308",
   },
   {
     duration: "4-5 nights",
-    value: 4,
+    value: 3,
     color: "#84cc16",
   },
   {
     duration: "6-7 nights",
-    value: 0,
+    value: 4,
     color: "#22c55e",
   },
   {
     duration: "8-14 nights",
-    value: 6,
+    value: 5,
     color: "#14b8a6",
   },
   {
     duration: "15-21 nights",
-    value: 0,
+    value: 7,
     color: "#3b82f6",
   },
   {
     duration: "21+ nights",
-    value: 7,
+    value: 0,
     color: "#a855f7",
   },
 ];
@@ -141,7 +141,7 @@ function DurationChart({ conirmedStays }) {
         <PieChart>
           <Pie
             data={startDataLight}
-            numKey="duration"
+            nameKey="duration"
             dataKey="value"
             innerRadius={85}
             outerRadius={110}
@@ -157,14 +157,15 @@ function DurationChart({ conirmedStays }) {
               />
             ))}
           </Pie>
+          <Legend
+            verticalAlign="middle"
+            align="right"
+            width="30%"
+            layout="vertical"
+            iconSize={15}
+            iconType="circle"
+          />
         </PieChart>
-        <Legend
-          verticalAlign="middle"
-          align="right"
-          width="30%"
-          layout="vertical"
-          iconType="circle"
-        />
       </ResponsiveContainer>
     </ChartBox>
   );

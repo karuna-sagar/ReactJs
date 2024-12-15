@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import Tag from "../../ui/Tag";
 import { Flag } from "../../ui/Flag";
+import Button from "../../ui/Button";
+import { Link } from "react-router-dom";
 
 const StyledTodayItem = styled.li`
   display: grid;
@@ -34,6 +36,16 @@ function TodayItem({ activity }) {
       />
       <Guest>{guests.name}</Guest>
       <div>{numNights} nights</div>
+      {status === "unconfirmed" && (
+        <Button
+          type="small"
+          variation="primary"
+          as={Link}
+          to={`/checkin/${id}`}
+        >
+          Check in
+        </Button>
+      )}
     </StyledTodayItem>
   );
 }

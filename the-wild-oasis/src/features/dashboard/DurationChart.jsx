@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
-import { Cell, Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
 
 const ChartBox = styled.div`
   /* Box */
@@ -137,7 +144,10 @@ function DurationChart({ conirmedStays }) {
   return (
     <ChartBox>
       <Heading as="h2">Stay duration summary</Heading>
-      <ResponsiveContainer>
+      <ResponsiveContainer
+        width="100%"
+        height={240}
+      >
         <PieChart>
           <Pie
             data={startDataLight}
@@ -157,6 +167,7 @@ function DurationChart({ conirmedStays }) {
               />
             ))}
           </Pie>
+          <Tooltip />
           <Legend
             verticalAlign="middle"
             align="right"

@@ -99,6 +99,15 @@ function SalesChart() {
             name="Total sales"
             unit="$"
           />
+          <Area
+            type="monotone"
+            dataKey="extraSales"
+            stroke={colors.extrasSales.stroke}
+            fill={colors.extrasSales.fill}
+            strokeWidth={2}
+            name="Extra Sales"
+            unit="$"
+          />
         </AreaChart>
       </ResponsiveContainer>
     </StyledSalesChart>

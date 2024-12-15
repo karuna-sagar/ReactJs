@@ -95,6 +95,9 @@ function SalesChart() {
             dataKey="totalSales"
             stroke={colors.totalSales.stroke}
             fill={colors.totalSales.fill}
+            strokeWidth={2}
+            name="Total sales"
+            unit="$"
           />
         </AreaChart>
       </ResponsiveContainer>

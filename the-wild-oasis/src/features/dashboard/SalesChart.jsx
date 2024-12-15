@@ -5,6 +5,7 @@ import {
   Area,
   AreaChart,
   CartesianGrid,
+  ResponsiveContainer,
   // ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -69,29 +70,32 @@ function SalesChart() {
         text: "#374151",
         background: "#fff",
       };
-  <StyledSalesChart>
-    <Heading as="h2">Sales</Heading>
-    <AreaChart
-      data={fakeData}
-      height={300}
-      width={700}
-    >
-      <XAxis
-        dataKey="label"
-        tick={{ fill: colors.text }}
-        tickLine={{ stroke: colors.text }}
-      />
-      <YAxis unit="$" />
-      <CartesianGrid strokeDasharray="4" />
-      <Tooltip />
-      <Area
-        type="monotone"
-        dataKey="totalSales"
-        stroke={colors.totalSales.stroke}
-        fill={colors.totalSales.fill}
-      />
-    </AreaChart>
-  </StyledSalesChart>;
+  return (
+    <StyledSalesChart>
+      <Heading as="h2">Sales</Heading>
+      <ResponsiveContainer
+        height={300}
+        width="100%"
+      >
+        <AreaChart data={fakeData}>
+          <XAxis
+            dataKey="label"
+            tick={{ fill: colors.text }}
+            tickLine={{ stroke: colors.text }}
+          />
+          <YAxis unit="$" />
+          <CartesianGrid strokeDasharray="4" />
+          <Tooltip />
+          <Area
+            type="monotone"
+            dataKey="totalSales"
+            stroke={colors.totalSales.stroke}
+            fill={colors.totalSales.fill}
+          />
+        </AreaChart>
+      </ResponsiveContainer>
+    </StyledSalesChart>
+  );
 }
 
 export default SalesChart;

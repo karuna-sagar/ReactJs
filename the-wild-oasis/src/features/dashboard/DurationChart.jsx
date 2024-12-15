@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Heading from "../../ui/Heading";
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
 const ChartBox = styled.div`
   /* Box */
@@ -148,7 +148,15 @@ function DurationChart({ conirmedStays }) {
             cx="40%"
             cy="50%"
             paddingAngle={3}
-          />
+          >
+            {startDataLight.map((entry) => (
+              <Cell
+                fill={entry.color}
+                stroke={entry.color}
+                key={entry.duration}
+              />
+            ))}
+          </Pie>
         </PieChart>
       </ResponsiveContainer>
     </ChartBox>

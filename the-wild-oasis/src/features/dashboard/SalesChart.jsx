@@ -83,9 +83,13 @@ function SalesChart() {
             tick={{ fill: colors.text }}
             tickLine={{ stroke: colors.text }}
           />
-          <YAxis unit="$" />
+          <YAxis
+            unit="$"
+            tick={{ fill: colors.text }}
+            tickLine={{ stroke: colors.text }}
+          />
           <CartesianGrid strokeDasharray="4" />
-          <Tooltip />
+          <Tooltip contentStyle={{ backgroundColor: colors.background }} />
           <Area
             type="monotone"
             dataKey="totalSales"

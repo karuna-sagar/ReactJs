@@ -29,3 +29,17 @@ const Box = styled.div`
     color: var(--color-grey-500);
   }
 `;
+import React from "react";
+import Heading from "./Heading";
+
+function ErrorFallback() {
+  return (
+    <StyledErrorFallback>
+      <Box>
+        <Heading as="h1">Something went wrong</Heading>
+      </Box>
+    </StyledErrorFallback>
+  );
+}
+
+export default ErrorFallback;

@@ -1,5 +1,7 @@
+import Header from "./components/header";
+
 function App() {
-  return <h1>Investment Calculator</h1>;
+  return <Header />;
 }
 
 export default App;

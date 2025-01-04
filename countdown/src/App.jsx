@@ -20,7 +20,7 @@ function App() {
         />
         <TimerChallenge
           title="Pros only"
-          targetTime={1}
+          targetTime={15}
         />
       </div>
     </>

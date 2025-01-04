@@ -1,13 +1,17 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export default function TimerChallenge({ title, targetTime }) {
+  const timer = useRef();
   const [timerExpired, setTimerExpired] = useState(false);
   const [timeStarted, setTimeStarted] = useState(false);
   function handleStart() {
-    setTimeout(() => {
+    timer.value = setTimeout(() => {
       setTimerExpired(true);
     }, targetTime * 1000);
     setTimeStarted(true);
+  }
+  function handleStop() {
+    clearTimeout(timer.current);
   }
   return (
     <section className="challenge">
@@ -17,11 +21,11 @@ export default function TimerChallenge({ title, targetTime }) {
         {targetTime} second{targetTime > 1 ? "s" : ""}
       </p>
       <p>
-        <button onClick={handleStart}>
-          {timeStarted ? "Start" : "Stop"} Challenge
+        <button onClick={timeStarted ? handleStop : handleStart}>
+          {timeStarted ? "Stop" : "Start"} Challenge
         </button>
       </p>
-      <p className="">
+      <p className={timeStarted ? "active" : undefined}>
         {timerExpired ? "Time is running..." : "Time is inactive"}
       </p>
     </section>

@@ -28,7 +28,7 @@ function App() {
       };
     });
   }
-  console.log(projectsState);
+  // console.log(projectsState);
   let content;
   if (projectsState.selectedProject === undefined) {
     content = <NoProjectSelected onStartAddProject={handleStartAddProject} />;

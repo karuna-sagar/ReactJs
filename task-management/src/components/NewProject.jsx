@@ -73,7 +73,7 @@ export default function NewProject({ onAdd, onCancel }) {
             textarea
           />
           <Input
-            type="text"
+            type="date"
             ref={dueDate}
             label="Due Date"
           />

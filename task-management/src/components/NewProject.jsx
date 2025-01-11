@@ -19,7 +19,7 @@ export default function NewProject() {
         <Input label="Title" />
         <Input
           label="Description"
-          isTextArea
+          textarea
         />
         <Input label="Due Date" />
       </div>

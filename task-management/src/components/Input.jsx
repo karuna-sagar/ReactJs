@@ -1,6 +1,4 @@
-import React from "react";
-
-export default function Input({ isTextArea, label, ...props }) {
+export default function Input({ label, textarea, ...props }) {
   const classes =
     "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600";
 
@@ -9,7 +7,7 @@ export default function Input({ isTextArea, label, ...props }) {
       <label className="text-sm font-bold uppercase text-stone-500">
         {label}
       </label>
-      {isTextArea ? (
+      {textarea ? (
         <textarea
           className={classes}
           {...props}

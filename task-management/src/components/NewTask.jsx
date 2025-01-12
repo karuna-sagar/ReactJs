@@ -6,6 +6,7 @@ export default function NewTask({ onAdd }) {
     setEnteredTask(event.target.value);
   }
   function handleClick() {
+    onAdd(enteredTask);
     setEnteredTask("");
   }
   return (
